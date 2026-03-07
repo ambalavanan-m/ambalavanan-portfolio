@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
           {/* Info Side (Left) - Advanced Image representing "About Me" vibe */}
           <div className="lg:w-2/5 relative">
             <img
-              src="/contact-workspace1.png"
+              src="/contact-workspace1.webp"
               alt="Developer Workspace"
               className="absolute inset-0 w-full h-full object-cover"
               loading="lazy"

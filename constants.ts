@@ -86,6 +86,41 @@ export const PROJECTS: Project[] = [
     techStack: ['PHP', 'JSON'],
     description: 'Interactive quiz platform for educational institutions featuring real-time scoring and performance reporting.',
   },
+  {
+    id: 5,
+    title: 'Loan Approval Prediction',
+    image: '/loan-prediction.webp',
+    githubUrl: 'https://github.com/ambalavanan01/Loan-Approval-Prediction',
+    liveUrl: ['https://aws-loan-approval-prediction.netlify.app/', 'https://d11lsquvmj22ld.cloudfront.net/'],
+    techStack: ['Python', 'Machine Learning', 'AWS', 'React'],
+    description: 'The AI Loan Prediction Portal is a comprehensive, end-to-end Machine Learning web application designed to assess and predict loan approval statuses instantly. By leveraging historical financial data and modern cloud architecture, this project bridges the gap between raw datasets and a fully functional user-facing product.',
+  },
+  {
+    id: 6,
+    title: 'YouTube focusmode browser extension',
+    image: '/focus-mode.webp',
+    githubUrl: 'https://github.com/ambalavanan01/YouTube-focusmode-broswer-extension-',
+    techStack: ['JavaScript', 'Browser Extension', 'CSS'],
+    description: 'Eliminate distractions on YouTube. Hide comments, recommendations, and Shorts with a single click. Focus on what matters.',
+  },
+  {
+    id: 7,
+    title: 'Local Retrieval-Augmented Generation',
+    image: '/RAG.webp',
+    githubUrl: 'https://github.com/ambalavanan01/Am-RAG',
+    liveUrl: 'https://am-rag.streamlit.app/',
+    techStack: ['Python', 'HuggingFace', 'Streamlit', 'Vector DB'],
+    description: 'This application allows users to upload documents (PDF, DOCX, PPTX, TXT) to their local machine, automatically chunk and embed the text into a completely local vector database using HuggingFace models, and "chat" with their documents seamlessly.',
+  },
+  {
+    id: 8,
+    title: 'Qr code Generator',
+    image: '/qrcode.webp',
+    githubUrl: 'https://github.com/ambalavanan01/Qr-generation',
+    liveUrl: 'https://am-rag.streamlit.app/',
+    techStack: ['Python', 'Streamlit', 'QR Code'],
+    description: 'Qr code generation for all Text, URL, wifi connection, mail sending',
+  },
 ];
 
 export const FORMSPREE_URL = "https://formspree.io/f/mrepwolr";

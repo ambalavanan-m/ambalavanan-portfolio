@@ -10,6 +10,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ResumeViewer from './components/ResumeViewer';
+import FloatingSocials from './components/FloatingSocials';
 import { ThemeProvider } from './components/ThemeContext';
 
 const Portfolio: React.FC = () => (
@@ -28,6 +29,7 @@ const Portfolio: React.FC = () => (
       <Projects />
       <Contact />
     </main>
+    <FloatingSocials />
     <Footer />
   </motion.div>
 );

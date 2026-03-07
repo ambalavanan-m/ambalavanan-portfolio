@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-slate-500 font-mono text-xs font-medium tracking-wider">v2.1.3</span>
+            <span className="text-slate-500 font-mono text-xs font-medium tracking-wider">v2.2.1</span>
           </div>
         </div>
       </div>
