@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-xs text-slate-300 uppercase font-semibold tracking-wider">Phone</p>
-                      <a href="tel:+911234567890" className="block text-sm sm:text-base font-medium hover:text-white transition-colors whitespace-nowrap">+91 9894797490</a>
+                      <a href="tel:+919894797490" className="block text-sm sm:text-base font-medium hover:text-white transition-colors whitespace-nowrap">+91 9894797490</a>
                     </div>
                   </div>
 
@@ -169,6 +169,12 @@ const Contact: React.FC = () => {
                   </a>
                   <a href="https://www.linkedin.com/in/ambalavananm/" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#0077b5] transition-all duration-300 border border-white/20" aria-label="LinkedIn">
                     <i className="fa-brands fa-linkedin-in text-lg"></i>
+                  </a>
+                  <a href="https://x.com/iam_ambalavanan" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 border border-white/20" aria-label="X (Twitter)">
+                    <i className="fa-brands fa-x-twitter text-lg"></i>
+                  </a>
+                  <a href="https://www.threads.com/@iam_ambalavanan" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 border border-white/20" aria-label="Threads">
+                    <i className="fa-brands fa-threads text-lg"></i>
                   </a>
                   <a href="https://www.instagram.com/iam_ambalavanan/" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#E1306C] transition-all duration-300 border border-white/20" aria-label="Instagram">
                     <i className="fa-brands fa-instagram text-lg"></i>

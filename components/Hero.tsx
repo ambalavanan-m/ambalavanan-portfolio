@@ -58,9 +58,11 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-center lg:justify-start gap-6 text-slate-400 pt-4">
-            <a href="https://github.com/ambalavanan01" className="hover:text-primary transition-colors"><i className="fa-brands fa-github text-2xl"></i></a>
-            <a href="https://www.linkedin.com/in/ambalavananm/" className="hover:text-primary transition-colors"><i className="fa-brands fa-linkedin text-2xl"></i></a>
-            <a href="https://www.instagram.com/iam_ambalavanan/" className="hover:text-primary transition-colors"><i className="fa-brands fa-instagram text-2xl"></i></a>
+            <a href="https://github.com/ambalavanan01" className="hover:text-primary transition-colors" aria-label="GitHub"><i className="fa-brands fa-github text-2xl"></i></a>
+            <a href="https://www.linkedin.com/in/ambalavananm/" className="hover:text-primary transition-colors" aria-label="LinkedIn"><i className="fa-brands fa-linkedin text-2xl"></i></a>
+            <a href="https://x.com/iam_ambalavanan" className="hover:text-primary transition-colors" aria-label="X (Twitter)"><i className="fa-brands fa-x-twitter text-2xl"></i></a>
+            <a href="https://www.threads.com/@iam_ambalavanan" className="hover:text-primary transition-colors" aria-label="Threads"><i className="fa-brands fa-threads text-2xl"></i></a>
+            <a href="https://www.instagram.com/iam_ambalavanan/" className="hover:text-primary transition-colors" aria-label="Instagram"><i className="fa-brands fa-instagram text-2xl"></i></a>
           </div>
         </div>
 

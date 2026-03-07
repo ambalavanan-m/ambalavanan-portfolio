@@ -35,6 +35,12 @@ const Footer: React.FC = () => {
             <a href="https://www.linkedin.com/in/ambalavananm/" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-blue-600 flex items-center justify-center transition-all duration-300" aria-label="LinkedIn">
               <i className="fa-brands fa-linkedin-in text-xl"></i>
             </a>
+            <a href="https://x.com/iam_ambalavanan" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-black flex items-center justify-center transition-all duration-300" aria-label="X (Twitter)">
+              <i className="fa-brands fa-x-twitter text-xl"></i>
+            </a>
+            <a href="https://www.threads.com/@iam_ambalavanan" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-black flex items-center justify-center transition-all duration-300" aria-label="Threads">
+              <i className="fa-brands fa-threads text-xl"></i>
+            </a>
             <a href="https://www.instagram.com/iam_ambalavanan/" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-pink-600 flex items-center justify-center transition-all duration-300" aria-label="Instagram">
               <i className="fa-brands fa-instagram text-xl"></i>
             </a>
@@ -48,7 +54,7 @@ const Footer: React.FC = () => {
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-slate-500 font-mono text-xs font-medium tracking-wider">v2.1.2</span>
+            <span className="text-slate-500 font-mono text-xs font-medium tracking-wider">v2.1.3</span>
           </div>
         </div>
       </div>
