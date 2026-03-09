@@ -1,8 +1,34 @@
 import React from 'react';
 import FadeIn from './FadeIn';
 import { GitHubCalendar } from 'react-github-calendar';
+import { db } from '../firebase';
+import { collection, query, where, onSnapshot } from 'firebase/firestore';
+import StarRating from './StarRating';
+import { Star, MessageSquare, Quote, Pin } from 'lucide-react';
 
 const About: React.FC = () => {
+  const [averageRating, setAverageRating] = React.useState<number | null>(null);
+  const [totalReviews, setTotalReviews] = React.useState<number>(0);
+  const [pinnedReview, setPinnedReview] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    const q = query(collection(db, 'reviews'), where('status', '==', 'approved'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const reviews = querySnapshot.docs.map(doc => doc.data());
+      setTotalReviews(reviews.length);
+      if (reviews.length > 0) {
+        const total = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+        setAverageRating(Number((total / reviews.length).toFixed(1)));
+      } else {
+        setAverageRating(null);
+      }
+
+      const pinned = reviews.find(r => r.isPinned === true);
+      setPinnedReview(pinned || null);
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <section id="about" className="py-24 bg-white  transition-colors duration-300 relative">
       <div className="container mx-auto px-6">
@@ -48,17 +74,74 @@ const About: React.FC = () => {
 
               <div className="grid gap-6 pt-4">
                 <div className="pt-6 w-full overflow-hidden">
-                  <h4 className="text-sm font-bold text-slate-800  uppercase tracking-wider mb-4 border-b border-slate-100  pb-2">
-                    <i className="fa-brands fa-github text-primary mr-2"></i> GitHub Contributions
+                  <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2">
+                    <i className="fa-brands fa-github text-primary mr-2"></i>
+                    GitHub Contributions (January {new Date().getFullYear()} - December {new Date().getFullYear()})
                   </h4>
-                  <div className="bg-slate-50  border border-slate-100  rounded-xl p-4 flex justify-center text-xs sm:text-sm">
+                  <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 flex justify-center text-xs sm:text-sm">
                     <GitHubCalendar
                       username="ambalavanan01"
+                      year={new Date().getFullYear()}
                       blockSize={12}
                       blockMargin={4}
                       fontSize={12}
                       colorScheme="light"
                     />
+                  </div>
+                </div>
+
+                {/* Community Feedback Panel */}
+                <div className="pt-6">
+                  <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2 flex items-center justify-between">
+                    <span>
+                      <MessageSquare size={16} className="inline-flex mr-2 text-primary" />
+                      Community Feedback
+                    </span>
+                    <span className="text-xs font-medium text-slate-400 normal-case">{totalReviews} Reviews</span>
+                  </h4>
+
+                  <div className="grid grid-cols-1 gap-4">
+                    {/* Stats Card */}
+                    <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 flex items-center justify-between shadow-sm">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-600">
+                          <Star size={24} fill="currentColor" />
+                        </div>
+                        <div>
+                          <p className="text-2xl font-bold text-slate-900">{averageRating || '0.0'}</p>
+                          <p className="text-xs text-slate-500 font-medium">Average Rating</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-1">
+                        <StarRating rating={Math.round(averageRating || 0)} />
+                      </div>
+                    </div>
+
+                    {/* Pinned Testimonial */}
+                    {pinnedReview && (
+                      <div className="relative bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-100/50 rounded-2xl p-6 overflow-hidden group">
+                        <div className="absolute top-4 right-4 text-blue-400 opacity-20 group-hover:opacity-40 transition-opacity">
+                          <Quote size={40} />
+                        </div>
+                        <div className="absolute -left-1 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"></div>
+                        <div className="flex items-center gap-2 mb-3 text-primary">
+                          <Pin size={14} className="fill-current" />
+                          <span className="text-[10px] font-bold uppercase tracking-widest">Featured Review</span>
+                        </div>
+                        <p className="text-slate-700 italic text-sm leading-relaxed mb-4 relative z-10">
+                          "{pinnedReview.comment}"
+                        </p>
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs">
+                            {pinnedReview.name.charAt(0)}
+                          </div>
+                          <div>
+                            <p className="text-xs font-bold text-slate-900">{pinnedReview.name}</p>
+                            <p className="text-[10px] text-slate-500">Verified Client</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 

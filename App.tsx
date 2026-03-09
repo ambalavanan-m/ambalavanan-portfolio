@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import ResumeViewer from './components/ResumeViewer';
 import FloatingSocials from './components/FloatingSocials';
 import { ThemeProvider } from './components/ThemeContext';
+import AdminPanel from './components/AdminPanel';
 
 const Portfolio: React.FC = () => (
   <motion.div
@@ -54,6 +55,7 @@ const AnimatedRoutes = () => {
             </motion.div>
           }
         />
+        <Route path="/admin" element={<AdminPanel />} />
       </Routes>
     </AnimatePresence>
   );

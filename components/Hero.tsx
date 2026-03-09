@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
       <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
 
         {/* Left Content */}
-        <div className="flex-1 text-center lg:text-left space-y-8 animate-[fadeIn_1s_ease-out]">
+        <div className="flex-1 text-center lg:text-left space-y-8 animate-[fadeIn_1s_ease-out] lg:pl-12">
           <div className="space-y-4">
             <span className="inline-block py-1.5 px-4 rounded-full bg-blue-50 border border-blue-100 text-primary text-sm font-bold tracking-wide uppercase mb-2">
               Portfolio
@@ -67,7 +67,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Right Image */}
-        <div className="flex-1 flex justify-center lg:justify-end relative">
+        <div className="flex-1 flex justify-center lg:justify-end relative lg:pr-12">
           <div className="relative w-72 h-72 md:w-96 md:h-96">
             <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-2xl opacity-20 animate-pulse"></div>
             <img
