@@ -122,27 +122,8 @@ const FloatingSocials: React.FC = () => {
 
     return (
         <>
-            {/* Sidebar Desktop View - MOVED TO RIGHT */}
-            <div className="fixed right-6 bottom-12 z-50 hidden xl:flex flex-col items-center gap-6">
-                <div className="flex flex-col gap-6">
-                    {socials.map((social, index) => (
-                        <motion.button
-                            key={social.name}
-                            onClick={() => setActivePreview(social)}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.3, delay: 1 + index * 0.1 }}
-                            className={`w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 ${social.color}`}
-                            aria-label={`Preview ${social.name}`}
-                        >
-                            <i className={`${social.icon} text-xl`}></i>
-                        </motion.button>
-                    ))}
-                </div>
-            </div>
-
-            {/* Floating Action Button (Mobile/Tablet View) */}
-            <div className="fixed right-6 bottom-6 z-50 xl:hidden">
+            {/* Floating Action Button (Mobile/Tablet/Desktop View) */}
+            <div className="fixed right-6 bottom-6 z-50">
                 <AnimatePresence>
                     {isOpen && (
                         <div className="flex flex-col-reverse items-center gap-4 mb-4">
@@ -169,7 +150,7 @@ const FloatingSocials: React.FC = () => {
                 <motion.button
                     onClick={() => setIsOpen(!isOpen)}
                     whileTap={{ scale: 0.9 }}
-                    className="w-14 h-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center text-2xl z-50"
+                    className="w-14 h-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center text-2xl z-50 transition-all hover:bg-primary/90"
                 >
                     <motion.i
                         animate={{ rotate: isOpen ? 45 : 0 }}
