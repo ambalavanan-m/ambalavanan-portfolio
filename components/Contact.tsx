@@ -3,8 +3,10 @@ import toast from 'react-hot-toast';
 import { FORMSPREE_URL } from '../constants';
 import { ContactFormState, FormStatus } from '../types';
 import FadeIn from './FadeIn';
+import ReviewForm from './ReviewForm';
 
 const Contact: React.FC = () => {
+  const [showReviewModal, setShowReviewModal] = useState(false);
   const [formData, setFormData] = useState<ContactFormState>({
     firstName: '',
     lastName: '',
@@ -180,6 +182,16 @@ const Contact: React.FC = () => {
                     <i className="fa-brands fa-instagram text-lg"></i>
                   </a>
                 </div>
+
+                <div className="mt-8 pt-8 border-t border-white/10">
+                   <p className="text-xs text-slate-300 uppercase font-semibold tracking-wider mb-4">Client Feedback</p>
+                   <button 
+                     onClick={() => setShowReviewModal(true)}
+                     className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white hover:text-slate-900 text-white font-medium text-sm transition-all duration-300 border border-white/20 backdrop-blur-sm flex items-center gap-2 shadow-sm"
+                   >
+                     <i className="fa-solid fa-star text-yellow-500"></i> Add a Review
+                   </button>
+                </div>
               </div>
             </div>
           </div>
@@ -287,6 +299,30 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Review Modal */}
+      {showReviewModal && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm p-4 animate-[fadeIn_0.3s_ease-out]"
+          onClick={() => setShowReviewModal(false)}
+        >
+          <div 
+            className="relative max-w-2xl w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute -top-12 right-0 md:-right-12 text-white/80 hover:text-white text-3xl transition-colors focus:outline-none"
+              onClick={() => setShowReviewModal(false)}
+              aria-label="Close modal"
+            >
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+            <div className="overflow-hidden rounded-3xl">
+               <ReviewForm />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

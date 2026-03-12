@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import Tilt from 'react-parallax-tilt';
 import { PROJECTS } from '../constants';
 import FadeIn from './FadeIn';
-import ReviewForm from './ReviewForm';
 
 const Projects: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -168,9 +167,6 @@ const Projects: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-24 max-w-4xl mx-auto">
-          <ReviewForm />
-        </div>
       </div>
 
       {/* Image Zoom Modal */}
