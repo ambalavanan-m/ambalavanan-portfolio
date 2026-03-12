@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ResumeViewer from './components/ResumeViewer';
 import FloatingSocials from './components/FloatingSocials';
+import BottomNavbar from './components/BottomNavbar';
 import { ThemeProvider } from './components/ThemeContext';
 import AdminPanel from './components/AdminPanel';
 
@@ -31,6 +32,7 @@ const Portfolio: React.FC = () => (
       <Contact />
     </main>
     <FloatingSocials />
+    <BottomNavbar />
     <Footer />
   </motion.div>
 );
