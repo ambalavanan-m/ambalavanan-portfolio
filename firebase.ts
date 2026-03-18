@@ -1,9 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-
+import { getAuth } from "firebase/auth";
 // Replace these placeholders with your actual Firebase configuration from the Firebase Console
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyCwywGKqc4hw-GCKYnNnPT8OHXY3orN8mo",
     authDomain: "review-a3744.firebaseapp.com",
     projectId: "review-a3744",
@@ -15,3 +15,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
+export const auth = getAuth(app);
