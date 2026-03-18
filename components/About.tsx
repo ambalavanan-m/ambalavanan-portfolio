@@ -72,9 +72,10 @@ const About: React.FC = () => {
 
   return (
     <section id="about" className="py-24 bg-white transition-colors duration-300 relative">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 space-y-20">
+        
+        {/* Row 1: Animation & Content */}
         <div className="flex flex-col md:flex-row items-center gap-16">
-
           {/* Left: Animation Area */}
           <div className="w-full md:w-1/2 flex justify-center">
             <FadeIn direction="up">
@@ -99,12 +100,12 @@ const About: React.FC = () => {
           {/* Right: Content */}
           <div className="w-full md:w-1/2 space-y-8">
             <FadeIn direction="up" delay={200}>
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <h2 className="text-primary font-bold tracking-widest uppercase text-sm">About Me</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-slate-900">Passionate <br />Developer</h3>
+                <h3 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight">Passionate <br />Developer</h3>
               </div>
 
-              <div className="text-slate-600 space-y-4 leading-relaxed text-lg">
+              <div className="text-slate-600 space-y-4 leading-relaxed text-lg mt-6">
                 <p>
                   I am a motivated <strong className="text-slate-900">Developer</strong> with a solid grasp of <span className="text-primary font-medium">Java, Python, C++, and Web Technologies</span>. I enjoy solving algorithmic problems and building useful applications.
                 </p>
@@ -113,186 +114,191 @@ const About: React.FC = () => {
                 </p>
               </div>
 
-              <div className="grid gap-6 pt-4">
-                <div className="pt-6 w-full overflow-hidden">
-                  <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2 flex items-center gap-2">
-                    <Award size={16} className="text-primary" />
-                    Certifications & Badges
-                  </h4>
-                  <div className="relative group">
+              <div className="pt-6 flex justify-start">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 text-primary hover:text-secondary font-bold transition-colors group"
+                >
+                  Get in touch <i className="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+
+        {/* Row 2: Feedback & Badges */}
+        <div className="flex flex-col md:flex-row items-stretch gap-16">
+          {/* Left: Community Feedback */}
+          <div className="w-full md:w-1/2 flex flex-col">
+            <FadeIn direction="up" delay={300} className="flex-1 flex flex-col">
+              <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-6 border-b border-slate-100 pb-3 flex items-center justify-between">
+                <span>
+                  <MessageSquare size={16} className="inline-flex mr-2 text-primary" />
+                  Community Feedback
+                </span>
+                <span className="text-xs font-medium text-slate-400 normal-case">{totalReviews} Reviews</span>
+              </h4>
+
+              <div className="grid grid-cols-1 gap-6 flex-1">
+                {/* Stats Card */}
+                <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex items-center justify-between shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-600">
+                      <Star size={24} fill="currentColor" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-slate-900">{averageRating || '0.0'}</p>
+                      <p className="text-xs text-slate-500 font-medium">Average Rating</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-1">
+                    <StarRating rating={averageRating || 0} />
+                  </div>
+                </div>
+
+                {/* Pinned Testimonial Carousel */}
+                {pinnedReviews.length > 0 && (
+                  <div className="relative overflow-hidden group flex-1 flex flex-col justify-center">
                     <AnimatePresence mode="wait">
                       <motion.div
-                        key={certIndex}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 1.05 }}
-                        transition={{ duration: 0.4 }}
-                        className="flex justify-center"
+                        key={currentIndex}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="relative bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-100/50 rounded-2xl p-8 overflow-hidden flex-1 flex flex-col justify-between"
                       >
-                        {CERTIFICATIONS[certIndex].image ? (
-                          <div className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                            <img 
-                              src={CERTIFICATIONS[certIndex].image} 
-                              alt={CERTIFICATIONS[certIndex].title}
-                              className="w-[200px] h-[150px] object-contain"
-                            />
-                            <p className="mt-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-center">
-                              {CERTIFICATIONS[certIndex].issuer}
-                            </p>
+                        <div className="absolute top-6 right-6 text-blue-400 opacity-20 group-hover:opacity-40 transition-opacity">
+                          <Quote size={40} />
+                        </div>
+                        <div className="absolute -left-1 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"></div>
+
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center gap-2 text-primary">
+                            <Pin size={14} className="fill-current" />
+                            <span className="text-[10px] font-bold uppercase tracking-widest">Featured Review</span>
                           </div>
-                        ) : (
-                          <CredlyBadge 
-                            badgeId={CERTIFICATIONS[certIndex].id || ''} 
-                            width={200}
-                            height={150}
-                          />
-                        )}
+                          <div className="flex gap-1">
+                            <StarRating rating={pinnedReviews[currentIndex].rating} />
+                          </div>
+                        </div>
+
+                        <p className="text-slate-700 italic text-sm md:text-base leading-relaxed mb-6 relative z-10 flex-1 flex items-center">
+                          "{pinnedReviews[currentIndex].comment}"
+                        </p>
+
+                        <div className="flex items-center gap-4 mt-auto">
+                          <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                            {pinnedReviews[currentIndex].name.charAt(0)}
+                          </div>
+                          <div>
+                            <p className="text-sm font-bold text-slate-900">{pinnedReviews[currentIndex].name}</p>
+                            <p className="text-xs text-slate-500 mt-0.5">Verified Client</p>
+                          </div>
+                        </div>
                       </motion.div>
                     </AnimatePresence>
 
-                    {CERTIFICATIONS.length > 1 && (
+                    {/* Navigation Controls */}
+                    {pinnedReviews.length > 1 && (
                       <>
-                        <button
-                          onClick={prevCert}
-                          className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
-                        >
-                          <ChevronLeft size={20} />
-                        </button>
-                        <button
-                          onClick={nextCert}
-                          className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
-                        >
-                          <ChevronRight size={20} />
-                        </button>
+                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <button
+                            onClick={prevSlide}
+                            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-colors shadow-sm"
+                          >
+                            <ChevronLeft size={20} />
+                          </button>
+                        </div>
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <button
+                            onClick={nextSlide}
+                            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-colors shadow-sm"
+                          >
+                            <ChevronRight size={20} />
+                          </button>
+                        </div>
+
+                        {/* Dots Indicator */}
+                        <div className="flex justify-center gap-2 mt-5">
+                          {pinnedReviews.map((_, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => setCurrentIndex(idx)}
+                              className={`w-2 h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? 'bg-primary w-6' : 'bg-slate-300 hover:bg-slate-400'
+                                }`}
+                            />
+                          ))}
+                        </div>
                       </>
                     )}
                   </div>
-                </div>
-
-                {/* Community Feedback Panel */}
-                <div className="pt-6">
-                  <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2 flex items-center justify-between">
-                    <span>
-                      <MessageSquare size={16} className="inline-flex mr-2 text-primary" />
-                      Community Feedback
-                    </span>
-                    <span className="text-xs font-medium text-slate-400 normal-case">{totalReviews} Reviews</span>
-                  </h4>
-
-                  <div className="grid grid-cols-1 gap-4">
-                    {/* Stats and Badge Grid */}
-                    <div className="grid grid-cols-1 gap-4">
-                      {/* Stats Card */}
-                      <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 flex items-center justify-between shadow-sm">
-                        <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-600">
-                            <Star size={24} fill="currentColor" />
-                          </div>
-                          <div>
-                            <p className="text-2xl font-bold text-slate-900">{averageRating || '0.0'}</p>
-                            <p className="text-xs text-slate-500 font-medium">Average Rating</p>
-                          </div>
-                        </div>
-                        <div className="flex gap-1">
-                          <StarRating rating={averageRating || 0} />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Pinned Testimonial Carousel */}
-                    {pinnedReviews.length > 0 && (
-                      <div className="relative overflow-hidden group">
-                        <AnimatePresence mode="wait">
-                          <motion.div
-                            key={currentIndex}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="relative bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-100/50 rounded-2xl p-6 overflow-hidden min-h-[180px]"
-                          >
-                            <div className="absolute top-4 right-4 text-blue-400 opacity-20 group-hover:opacity-40 transition-opacity">
-                              <Quote size={40} />
-                            </div>
-                            <div className="absolute -left-1 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"></div>
-
-                            <div className="flex items-center justify-between mb-3">
-                              <div className="flex items-center gap-2 text-primary">
-                                <Pin size={14} className="fill-current" />
-                                <span className="text-[10px] font-bold uppercase tracking-widest">Featured Review</span>
-                              </div>
-                              <div className="flex gap-1">
-                                <StarRating rating={pinnedReviews[currentIndex].rating} />
-                              </div>
-                            </div>
-
-                            <p className="text-slate-700 italic text-sm leading-relaxed mb-4 relative z-10">
-                              "{pinnedReviews[currentIndex].comment}"
-                            </p>
-
-                            <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shadow-sm">
-                                {pinnedReviews[currentIndex].name.charAt(0)}
-                              </div>
-                              <div>
-                                <p className="text-xs font-bold text-slate-900">{pinnedReviews[currentIndex].name}</p>
-                                <p className="text-[10px] text-slate-500">Verified Client</p>
-                              </div>
-                            </div>
-                          </motion.div>
-                        </AnimatePresence>
-
-                        {/* Navigation Controls */}
-                        {pinnedReviews.length > 1 && (
-                          <>
-                            <div className="absolute inset-y-0 left-0 flex items-center pl-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                              <button
-                                onClick={prevSlide}
-                                className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-colors"
-                              >
-                                <ChevronLeft size={18} />
-                              </button>
-                            </div>
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                              <button
-                                onClick={nextSlide}
-                                className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-colors"
-                              >
-                                <ChevronRight size={18} />
-                              </button>
-                            </div>
-
-                            {/* Dots Indicator */}
-                            <div className="flex justify-center gap-1.5 mt-4">
-                              {pinnedReviews.map((_, idx) => (
-                                <button
-                                  key={idx}
-                                  onClick={() => setCurrentIndex(idx)}
-                                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${currentIndex === idx ? 'bg-primary w-4' : 'bg-slate-300 hover:bg-slate-400'
-                                    }`}
-                                />
-                              ))}
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="pt-6 flex justify-start">
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-2 text-primary hover:text-secondary font-bold transition-colors group"
-                  >
-                    Get in touch <i className="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                  </a>
-                </div>
+                )}
               </div>
             </FadeIn>
           </div>
 
+          {/* Right: Certifications & Badges */}
+          <div className="w-full md:w-1/2 flex flex-col">
+            <FadeIn direction="up" delay={400} className="flex-1 flex flex-col">
+              <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-6 border-b border-slate-100 pb-3 flex items-center gap-2">
+                <Award size={16} className="text-primary" />
+                Certifications & Badges
+              </h4>
+              <div className="relative group flex-1 flex flex-col justify-center items-center bg-slate-50/50 border border-slate-100 rounded-2xl p-8">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={certIndex}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.05 }}
+                    transition={{ duration: 0.4 }}
+                    className="flex justify-center w-full"
+                  >
+                    {CERTIFICATIONS[certIndex].image ? (
+                      <div className="flex flex-col items-center justify-center p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow w-full max-w-sm">
+                        <img 
+                          src={CERTIFICATIONS[certIndex].image} 
+                          alt={CERTIFICATIONS[certIndex].title}
+                          className="w-[240px] h-[180px] object-contain"
+                        />
+                        <p className="mt-6 text-sm font-bold text-slate-400 uppercase tracking-widest text-center">
+                          {CERTIFICATIONS[certIndex].issuer}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                        <CredlyBadge 
+                          badgeId={CERTIFICATIONS[certIndex].id || ''} 
+                          width={240}
+                          height={180}
+                        />
+                      </div>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+
+                {CERTIFICATIONS.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevCert}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-all opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 shadow-sm"
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
+                    <button
+                      onClick={nextCert}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-all opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 shadow-sm"
+                    >
+                      <ChevronRight size={20} />
+                    </button>
+                  </>
+                )}
+              </div>
+            </FadeIn>
+          </div>
         </div>
+
       </div>
     </section>
   );
