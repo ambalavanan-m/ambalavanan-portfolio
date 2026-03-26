@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Check, Copy, Github, Instagram, Linkedin, LoaderCircle, Mail, MessageCircle, Phone, Send, Star, Twitter, X } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { FORMSPREE_URL } from '../constants';
 import { ContactFormState, FormStatus } from '../types';
 import ReviewForm from './ReviewForm';
 
@@ -67,7 +68,7 @@ const Contact: React.FC = () => {
     const loadToast = toast.loading('Sending message...');
 
     try {
-      const response = await fetch('http://localhost:5001/api/contact', {
+      const response = await fetch(FORMSPREE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -80,13 +81,12 @@ const Contact: React.FC = () => {
         toast.success('Message sent successfully!');
         setTimeout(() => setStatus('idle'), 3000);
       } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed');
+        throw new Error('Failed');
       }
-    } catch (error: any) {
+    } catch (error) {
       setStatus('error');
       toast.dismiss(loadToast);
-      toast.error(error.message || 'Failed to send message.');
+      toast.error('Failed to send message.');
     }
   };
 
