@@ -82,7 +82,7 @@ const About: React.FC = () => {
               <div className="relative w-full max-w-md aspect-square rounded-3xl bg-slate-50 p-8 flex items-center justify-center overflow-hidden group shadow-inner">
                 {/* Floating Elements */}
                 <img
-                  src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Technologist.png"
+                  src="https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/Technologist_qocoht.png"
                   alt="Coding Animation"
                   className="w-64 h-64 object-contain animate-float drop-shadow-xl transition-all duration-500 transform group-hover:scale-110"
                 />

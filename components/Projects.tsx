@@ -66,47 +66,49 @@ const Projects: React.FC = () => {
                       ))}
                     </div>
 
-                    <div className="flex gap-3 flex-wrap">
+                    <div className="flex flex-col gap-3">
                       <Link
                         to={`/projects/${project.slug}`}
-                        className="flex-1 py-2.5 text-center rounded-lg border border-slate-200 bg-white text-slate-900 font-medium hover:border-primary hover:text-primary transition-colors text-sm flex items-center justify-center gap-2"
+                        className="group w-full py-2.5 text-center rounded-lg bg-primary hover:bg-primary-hover text-white font-medium shadow-md hover:shadow-lg transition-all duration-300 text-sm flex items-center justify-center gap-2 hover:-translate-y-0.5"
                         aria-label={`Read case study for ${project.title}`}
                       >
-                        <ArrowRight className="w-4 h-4" /> Case Study
+                        Case Study <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </Link>
-                      <a
-                        href={project.githubUrl}
-                        className="flex-1 py-2.5 text-center rounded-lg bg-slate-100  text-slate-700  font-medium hover:bg-slate-200  transition-colors text-sm flex items-center justify-center gap-2"
-                        aria-label={`View Code for ${project.title}`}
-                      >
-                        <Github className="w-4 h-4" /> Code
-                      </a>
-                      {project.liveUrl && (
-                        Array.isArray(project.liveUrl) ? (
-                          project.liveUrl.map((url, i) => (
+                      <div className="flex gap-3">
+                        <a
+                          href={project.githubUrl}
+                          className="flex-1 py-2.5 text-center rounded-lg bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition-colors text-sm flex items-center justify-center gap-2"
+                          aria-label={`View Code for ${project.title}`}
+                        >
+                          <Github className="w-4 h-4" /> Code
+                        </a>
+                        {project.liveUrl && (
+                          Array.isArray(project.liveUrl) ? (
+                            project.liveUrl.map((url, i) => (
+                              <a
+                                key={i}
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 py-2.5 text-center rounded-lg bg-secondary/10 text-secondary font-medium hover:bg-secondary hover:text-white transition-all text-sm flex items-center justify-center gap-2"
+                                aria-label={`View Live Demo ${i + 1} for ${project.title}`}
+                              >
+                                <ExternalLink className="w-4 h-4" /> Live {i + 1}
+                              </a>
+                            ))
+                          ) : (
                             <a
-                              key={i}
-                              href={url}
+                              href={project.liveUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="flex-1 py-2.5 text-center rounded-lg bg-secondary/10 text-secondary font-medium hover:bg-secondary hover:text-white transition-all text-sm flex items-center justify-center gap-2"
-                              aria-label={`View Live Demo ${i + 1} for ${project.title}`}
+                              aria-label={`View Live Demo for ${project.title}`}
                             >
-                              <ExternalLink className="w-4 h-4" /> Live {i + 1}
+                              <ExternalLink className="w-4 h-4" /> Live
                             </a>
-                          ))
-                        ) : (
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 py-2.5 text-center rounded-lg bg-secondary/10 text-secondary font-medium hover:bg-secondary hover:text-white transition-all text-sm flex items-center justify-center gap-2"
-                            aria-label={`View Live Demo for ${project.title}`}
-                          >
-                            <ExternalLink className="w-4 h-4" /> Live
-                          </a>
-                        )
-                      )}
+                          )
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>

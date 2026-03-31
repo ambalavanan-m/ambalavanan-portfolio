@@ -75,7 +75,7 @@ const Header: React.FC = () => {
             aria-label="Home"
           >
             <div className={`rounded-full overflow-hidden shadow-sm transform group-hover:scale-105 transition-all outline outline-2 outline-offset-2 outline-transparent group-hover:outline-primary ${isScrolled ? 'w-9 h-9' : 'w-10 h-10'}`}>
-              <img src="/profile.webp" alt="Ambalavanan profile" className="w-full h-full object-cover" />
+              <img src="https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/profile_svzusg.webp" alt="Ambalavanan profile" className="w-full h-full object-cover" />
             </div>
             <span className="text-lg md:text-xl font-bold text-slate-800 group-hover:text-primary transition-colors font-display">
               Ambalavanan

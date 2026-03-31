@@ -26,13 +26,11 @@ const Footer: React.FC = () => {
               </a>
             ))}
             <a href="#contact" className="text-slate-600  hover:text-primary  transition-colors font-medium">Contact</a>
-            <span className="hidden md:inline text-slate-300">|</span>
-            <a href="/convertpdf" className="text-slate-400 hover:text-primary transition-colors text-sm font-medium">Converter</a>
           </div>
 
           {/* Socials - Right */}
           <div className="flex gap-4">
-            <a href="https://github.com/ambalavanan01" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-slate-900 flex items-center justify-center transition-all duration-300" aria-label="GitHub">
+            <a href="https://github.com/ambalavanan-m" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-slate-900 flex items-center justify-center transition-all duration-300" aria-label="GitHub">
               <Github className="w-5 h-5" />
             </a>
             <a href="https://www.linkedin.com/in/ambalavanan-m/" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-blue-600 flex items-center justify-center transition-all duration-300" aria-label="LinkedIn">
@@ -51,14 +49,17 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-slate-200  pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-400 text-sm">
-            &copy; {new Date().getFullYear()} Ambalavanan. All rights reserved.
-          </p>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-slate-500 font-mono text-xs font-medium tracking-wider">v2.3.1</span>
+        <div className="border-t border-slate-200 pt-8 mt-8 flex flex-col md:flex-row items-center gap-4 md:gap-0">
+          <div className="md:flex-1 text-center md:text-left">
+            <p className="text-slate-400 text-sm">
+              &copy; {new Date().getFullYear()} Ambalavanan. All rights reserved.
+            </p>
           </div>
+          <div className="md:flex-1 flex items-center justify-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span className="text-slate-500 font-mono text-xs font-medium tracking-wider">v1.5.8</span>
+          </div>
+          <div className="hidden md:block md:flex-1"></div>
         </div>
       </div>
     </footer>

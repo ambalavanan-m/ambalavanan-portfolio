@@ -61,7 +61,7 @@ export const PROJECTS: Project[] = [
     id: 1,
     slug: 'e-voting-using-blockchain',
     title: 'E-Voting Using Blockchain',
-    image: '/e-voting.webp',
+    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/e-voting_nvlg8o.webp',
     githubUrl: 'https://github.com/ambalavanan-m/E-Voting-using-Blockchain',
     liveUrl: 'https://e-vote-blockchain.netlify.app/',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Solidity', 'Blockchain'],
@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
     id: 2,
     slug: 'crisis-response-management',
     title: 'Crisis Response Management',
-    image: '/crisis.webp',
+    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/crisis_khafjg.webp',
     githubUrl: 'https://github.com/ambalavanan-m/crisis-response-command-center',
     liveUrl: 'https://crisis-management.netlify.app/',
     techStack: ['HTML', 'CSS', 'JavaScript'],
@@ -97,7 +97,7 @@ export const PROJECTS: Project[] = [
     id: 5,
     slug: 'loan-approval-prediction',
     title: 'Loan Approval Prediction',
-    image: '/loan-prediction.webp',
+    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/loan-prediction_uxggsv.webp',
     githubUrl: 'https://github.com/ambalavanan-m/Loan-Approval-Prediction',
     liveUrl: 'https://aws-loan-approval-prediction.netlify.app/',
     techStack: ['Python', 'Machine Learning', 'AWS', 'React'],
@@ -114,8 +114,8 @@ export const PROJECTS: Project[] = [
   {
     id: 4,
     slug: 'ske-textiles',
-    title: 'SKE Textiles',
-    image: '/sketextiles.webp',
+    title: 'SKE Textiles and Readymades',
+    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/sketextiles_zqewv1.webp',
     githubUrl: 'https://github.com/ambalavanan-m/ske-text',
     liveUrl: 'https://ske-textiles.netlify.app/',
     techStack: ['React'],
@@ -133,7 +133,7 @@ export const PROJECTS: Project[] = [
     id: 5,
     slug: 'online-quiz-management',
     title: 'Online Quiz Management',
-    image: '/onlinequiz.webp',
+    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/onlinequiz_ze267l.webp',
     githubUrl: 'https://github.com/ambalavanan-m/Online-Quiz-management',
     techStack: ['PHP', 'JSON'],
     description: 'Interactive quiz platform for educational institutions featuring real-time scoring and performance reporting.',
@@ -150,7 +150,7 @@ export const PROJECTS: Project[] = [
     id: 6,
     slug: 'youtube-focusmode-browser-extension',
     title: 'YouTube focusmode browser extension',
-    image: '/focus-mode.webp',
+    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/focus-mode_ljx3p3.webp',
     githubUrl: 'https://github.com/ambalavanan-m/YouTube-focusmode-broswer-extension-',
     techStack: ['JavaScript', 'Browser Extension', 'CSS'],
     description: 'Eliminate distractions on YouTube. Hide comments, recommendations, and Shorts with a single click. Focus on what matters.',
@@ -167,7 +167,7 @@ export const PROJECTS: Project[] = [
     id: 7,
     slug: 'local-retrieval-augmented-generation',
     title: 'Local Retrieval-Augmented Generation',
-    image: '/RAG.webp',
+    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/RAG_rbbkay.webp',
     githubUrl: 'https://github.com/ambalavanan-m/Am-RAG',
     liveUrl: 'https://am-rag.streamlit.app/',
     techStack: ['Python', 'Streamlit', 'Vector DB'],
@@ -189,6 +189,6 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: 'AWS Certified Cloud Practitioner',
     issuer: 'Amazon Web Services (AWS)',
-    image: '/aws-academy-graduate-cloud-foundations-training-bad.png'
+    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/aws-academy-graduate-cloud-foundations-training-bad_watake.png'
   }
 ];

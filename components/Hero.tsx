@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-center lg:justify-start gap-6 text-slate-400 pt-4">
-            <a href="https://github.com/ambalavanan01" className="hover:text-primary transition-colors" aria-label="GitHub"><Github className="w-6 h-6" /></a>
+            <a href="https://github.com/ambalavanan-m" className="hover:text-primary transition-colors" aria-label="GitHub"><Github className="w-6 h-6" /></a>
             <a href="https://www.linkedin.com/in/ambalavanan-m/" className="hover:text-primary transition-colors" aria-label="LinkedIn"><Linkedin className="w-6 h-6" /></a>
             <a href="https://x.com/iam_ambalavanan" className="hover:text-primary transition-colors" aria-label="X (Twitter)"><Twitter className="w-6 h-6" /></a>
             <a href="https://www.threads.com/@iam_ambalavanan" className="hover:text-primary transition-colors" aria-label="Threads"><MessageCircle className="w-6 h-6" /></a>
@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
           <div className="relative w-72 h-72 md:w-96 md:h-96">
             <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-2xl opacity-20 animate-pulse"></div>
             <img
-              src="/profile.webp"
+              src="https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/profile_svzusg.webp"
               alt="Ambalavanan M - Software Engineer and Web Developer"
               className="relative w-full h-full object-cover rounded-3xl shadow-2xl z-10 rotate-3 hover:rotate-0 transition-transform duration-500 border-4 border-white"
               loading="eager"

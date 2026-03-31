@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { ArrowLeft, BriefcaseBusiness, Code2, FileCode2, FileText, Github, GraduationCap, Linkedin, Mail, Phone, UserRound } from 'lucide-react';
+import { ArrowLeft, BriefcaseBusiness, Code2, FileText, Github, GraduationCap, Linkedin, Mail, Phone, UserRound } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { SKILL_CATEGORIES, PROJECTS } from '../constants';
 
@@ -17,13 +17,6 @@ const ResumeViewer: React.FC = () => {
                     <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> Back to Portfolio
                 </button>
                 <div className="flex gap-4">
-                    <a
-                        href="/resume.json"
-                        download="resume.json"
-                        className="px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer"
-                    >
-                        <FileCode2 className="w-4 h-4" /> JSON
-                    </a>
                     <a
                         href="/resume.pdf"
                         download="Ambalavanan_Resume.pdf"

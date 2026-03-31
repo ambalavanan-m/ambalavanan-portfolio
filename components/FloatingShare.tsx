@@ -28,7 +28,7 @@ const SOCIAL_LINKS: SocialLink[] = [
   {
     id: 'github',
     name: 'GitHub',
-    url: 'https://github.com/ambalavanan01',
+    url: 'https://github.com/ambalavanan-m',
     icon: Github,
     color: '#24292e',
     gradient: 'from-gray-700 to-gray-900',

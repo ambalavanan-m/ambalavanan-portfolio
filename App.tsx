@@ -13,12 +13,11 @@ import BottomNavbar from './components/BottomNavbar';
 import { ThemeProvider } from './components/ThemeContext';
 import FloatingShare from './components/FloatingShare';
 import Seo from './components/Seo';
-import { adminMeta, converterMeta, homeMeta, resumeMeta } from './seo';
+import { adminMeta, homeMeta, resumeMeta } from './seo';
 import ProjectDetail from './components/ProjectDetail';
 
 const ResumeViewer = React.lazy(() => import('./components/ResumeViewer'));
 const AdminPanel = React.lazy(() => import('./components/AdminPanel'));
-const ConvertPdf = React.lazy(() => import('./components/ConvertPdf'));
 
 const Portfolio: React.FC = () => (
   <>
@@ -79,17 +78,7 @@ const AnimatedRoutes = () => {
             </>
           } 
         />
-        <Route 
-          path="/convertpdf" 
-          element={
-            <>
-              <Seo meta={converterMeta} />
-              <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center text-primary">Loading Converter...</div>}>
-                <ConvertPdf />
-              </React.Suspense>
-            </>
-          } 
-        />
+
       </Routes>
     </AnimatePresence>
   );
