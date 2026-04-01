@@ -4,10 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { ResumeData } from '../types';
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
 import { toast } from 'react-hot-toast';
-
+import { generateResumePDF } from '../utils/resumePdf';
+import { generateResumeDocx } from '../utils/resumeDocx';
 const ResumeViewer: React.FC = () => {
     const navigate = useNavigate();
     const resumeRef = useRef<HTMLDivElement>(null);
@@ -35,53 +34,33 @@ const ResumeViewer: React.FC = () => {
         fetchResume();
     }, []);
 
+
     const handleDownloadPdf = async () => {
-        if (!resumeRef.current) return;
+        if (!resumeData) return;
         
         try {
-            const element = resumeRef.current;
-            const originalColor = element.style.backgroundColor;
-            const originalBoxShadow = element.style.boxShadow;
-            const originalBorder = element.style.border;
+            toast.loading("Drawing Professional PDF...", { id: "pdf-toast" });
 
-            // Optional styling reset for cleaner canvas capture
-            element.style.backgroundColor = 'white';
-            element.style.boxShadow = 'none';
-            element.style.border = 'none';
+            // Use the direct drawing utility (jsPDF + autoTable)
+            generateResumePDF(resumeData);
 
-            toast.loading("Generating PDF...", { id: "pdf-toast" });
-
-            const canvas = await html2canvas(element, {
-                scale: 2,
-                useCORS: true,
-                logging: false,
-                backgroundColor: '#ffffff'
-            });
-
-            // Restore styling
-            element.style.backgroundColor = originalColor;
-            element.style.boxShadow = originalBoxShadow;
-            element.style.border = originalBorder;
-
-            const imgData = canvas.toDataURL('image/jpeg', 0.98);
-            const pdf = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: 'a4'
-            });
-
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-            pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-
-            const filename = `${resumeData?.name.replace(/\s+/g, '_')}_Resume.pdf`;
-            pdf.save(filename);
-            
-            toast.success("PDF Downloaded!", { id: "pdf-toast" });
-        } catch (error) {
+            toast.success("Premium PDF Downloaded!", { id: "pdf-toast" });
+        } catch (error: any) {
             console.error("Error generating PDF:", error);
-            toast.error("Failed to generate PDF. Triggering native print.", { id: "pdf-toast" });
-            window.print();
+            const errMsg = error?.message || String(error);
+            toast.error(`Failed to generate PDF: ${errMsg}`, { id: "pdf-toast", duration: 6000 });
+        }
+    };
+    const handleDownloadDocx = async () => {
+        if (!resumeData) return;
+        try {
+            toast.loading("Generating Word Document...", { id: "docx-toast" });
+            await generateResumeDocx(resumeData);
+            toast.success("Word Document Downloaded!", { id: "docx-toast" });
+        } catch (error: any) {
+            console.error("Error generating Word doc:", error);
+            const errMsg = error?.message || String(error);
+            toast.error(`Failed to generate Word doc: ${errMsg}`, { id: "docx-toast" });
         }
     };
 
@@ -121,7 +100,13 @@ const ResumeViewer: React.FC = () => {
                         onClick={handleDownloadPdf}
                         className="px-6 py-2.5 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer border border-primary/20"
                     >
-                        <FileText className="w-4 h-4" /> Download ATS PDF
+                        <FileText className="w-4 h-4" /> Download Premium PDF
+                    </button>
+                    <button
+                        onClick={handleDownloadDocx}
+                        className="px-6 py-2.5 bg-white text-slate-700 border border-slate-200 hover:border-blue-600 hover:text-blue-600 font-medium rounded-lg shadow-sm hover:shadow-md transition-all flex items-center gap-2 cursor-pointer"
+                    >
+                        <FileText className="w-4 h-4 text-blue-600" /> Download MS Word
                     </button>
                 </div>
             </div>
