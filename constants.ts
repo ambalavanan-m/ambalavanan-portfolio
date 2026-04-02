@@ -133,7 +133,7 @@ export const PROJECTS: Project[] = [
     id: 5,
     slug: 'online-quiz-management',
     title: 'Online Quiz Management',
-    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/onlinequiz_ze267l.webp',
+    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/q_auto/f_auto/v1775117847/quizmanagement_oskzc6.jpg',
     githubUrl: 'https://github.com/ambalavanan-m/Online-Quiz-management',
     techStack: ['PHP', 'JSON'],
     description: 'Interactive quiz platform for educational institutions featuring real-time scoring and performance reporting.',
