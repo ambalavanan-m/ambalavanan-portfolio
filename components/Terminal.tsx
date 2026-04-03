@@ -93,8 +93,8 @@ const Terminal: React.FC = () => {
           ...prev,
           'Socials:',
           '  GitHub: github.com/ambalavanan-m',
-          '  LinkedIn: linkedin/in/your-profile',
-          '  Email: m.ambalavanan@example.com'
+          '  LinkedIn: https://www.linkedin.com/in/ambalavanan-m/',
+          '  Email: ambalavanan275@gmail.com'
         ]);
         break;
       case 'clear':
