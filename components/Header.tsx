@@ -12,8 +12,15 @@ const Header: React.FC = () => {
   const { scrollYProgress } = useScroll();
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     handleScroll();
@@ -28,13 +35,20 @@ const Header: React.FC = () => {
 
     if (sections.length === 0) return;
 
+    let ticking = false;
     const handleScroll = () => {
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
-        setActiveSection('contact');
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
+            setActiveSection('contact');
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -65,12 +79,16 @@ const Header: React.FC = () => {
       />
 
       <header
-        className={`fixed left-1/2 -translate-x-1/2 z-[60] transition-all duration-300 w-[96%] max-w-7xl ${isScrolled
-          ? 'top-4 bg-white/90 backdrop-blur-xl border border-slate-200 shadow-sm rounded-2xl py-2 px-2'
-          : 'top-6 bg-transparent border-b border-transparent py-3 px-4'
+        className={`fixed left-1/2 -translate-x-1/2 z-[60] transition-all duration-500 ease-out w-[96%] max-w-7xl ${isScrolled
+          ? 'top-2'
+          : 'top-4'
           }`}
       >
-        <div className="w-full px-4 flex justify-between items-center">
+        <div className={`w-full transition-all duration-500 ease-out border shadow-sm backdrop-blur-xl flex justify-between items-center ${isScrolled
+            ? 'bg-white/80 border-slate-200/60 rounded-full py-1.5 px-3 shadow-lg shadow-slate-200/20 max-w-4xl mx-auto'
+            : 'bg-white/40 border-transparent rounded-[2rem] py-3 px-5 shadow-none'
+          }`}>
+          
           {/* Logo & Name */}
           <div
             onClick={(e) => {
@@ -82,30 +100,37 @@ const Header: React.FC = () => {
             aria-label="Home"
           >
             <Link to="/" className="flex items-center gap-3">
-              <div className={`rounded-xl overflow-hidden border border-slate-200 transform group-hover:scale-105 transition-all ${isScrolled ? 'w-9 h-9' : 'w-10 h-10'}`}>
+              <div className={`rounded-full overflow-hidden border-2 border-white shadow-sm transform group-hover:scale-110 transition-all duration-500 ease-spring ${isScrolled ? 'w-7 h-7' : 'w-9 h-9'}`}>
                 <img src="https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/profile_svzusg.webp" alt="Ambalavanan profile" className="w-full h-full object-cover" />
               </div>
-              <span className="text-lg md:text-xl font-bold text-text group-hover:text-primary transition-colors font-display">
+              <span className={`font-bold text-text group-hover:text-primary transition-all duration-300 font-display tracking-tight ${isScrolled ? 'text-sm' : 'text-base md:text-lg'}`}>
                 Ambalavanan
               </span>
             </Link>
           </div>
 
-          <div className="flex items-center gap-4 lg:gap-8">
+          <div className="flex items-center gap-2 lg:gap-4">
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center space-x-1">
+            <nav className="hidden lg:flex items-center bg-slate-100/50 p-1 rounded-full border border-slate-200/30">
               {NAV_LINKS.map((link) => {
                 const isActive = activeSection === link.href.substring(1);
                 return (
                   <a
                     key={link.name}
                     href={link.href}
-                    className={`relative px-4 py-1.5 rounded-lg font-medium transition-all duration-200 text-sm ${isActive
-                      ? 'bg-primary/5 text-primary border border-primary/20'
-                      : 'text-slate-600 hover:text-text hover:bg-slate-50'
+                    className={`relative px-4 py-1.5 rounded-full font-semibold transition-all duration-300 text-sm overflow-hidden ${isActive
+                      ? 'text-primary'
+                      : 'text-slate-500 hover:text-text'
                       }`}
                   >
-                    <span>{link.name}</span>
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-pill"
+                        className="absolute inset-0 bg-white shadow-sm border border-slate-200/50 rounded-full z-0"
+                        transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.name}</span>
                   </a>
                 );
               })}
@@ -113,20 +138,23 @@ const Header: React.FC = () => {
 
             {/* Action Group */}
             <div className="flex items-center gap-3">
-              <a
-                href="#contact"
-                className="hidden md:inline-flex px-6 py-2 bg-text hover:bg-primary text-white font-medium rounded-xl transition-all duration-300 shadow-sm transform hover:-translate-y-0.5 text-sm"
-              >
-                Let's Talk
-              </a>
-
               {/* Mobile Toggle */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden p-2 rounded-xl border border-slate-200 text-slate-500 hover:text-primary hover:bg-slate-50 transition-all"
+                className={`lg:hidden flex items-center justify-center transition-all duration-300 ${isScrolled ? 'w-8 h-8' : 'w-10 h-10'} rounded-full border border-slate-200/60 bg-white/50 text-slate-600 hover:text-primary active:scale-90`}
                 aria-label="Toggle menu"
               >
-                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={isMenuOpen ? 'close' : 'menu'}
+                    initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {isMenuOpen ? <X size={18} strokeWidth={2.5} /> : <Menu size={18} strokeWidth={2.5} />}
+                  </motion.div>
+                </AnimatePresence>
               </button>
             </div>
           </div>
@@ -136,37 +164,38 @@ const Header: React.FC = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="lg:hidden absolute top-full left-0 right-0 mt-4 mx-0 bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden z-40"
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+              className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-2xl border border-slate-200/60 rounded-[2rem] shadow-2xl shadow-slate-400/20 overflow-hidden z-40 p-2 mx-2"
             >
-              <nav className="flex flex-col p-4 space-y-2">
-                {NAV_LINKS.map((link) => {
+              <nav className="flex flex-col gap-0.5">
+                {NAV_LINKS.map((link, index) => {
                   const isActive = activeSection === link.href.substring(1);
                   return (
-                    <a
+                    <motion.a
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 * index }}
                       key={link.name}
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`px-6 py-4 rounded-xl font-bold transition-all text-base flex justify-between items-center ${isActive
-                        ? 'bg-primary/5 text-primary border border-primary/10'
-                        : 'text-slate-500 hover:bg-slate-50'
+                      className={`px-6 py-3.5 rounded-2xl font-bold transition-all text-base flex justify-between items-center ${isActive
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'
                         }`}
                     >
                       {link.name}
-                      {isActive && <div className="w-1.5 h-1.5 rounded-full bg-primary" />}
-                    </a>
+                      {isActive && (
+                        <motion.div 
+                          layoutId="mobile-active-dot"
+                          className="w-1.5 h-1.5 rounded-full bg-primary" 
+                        />
+                      )}
+                    </motion.a>
                   );
                 })}
-                <a
-                  href="#contact"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="mx-2 mt-4 px-6 py-4 bg-text text-white text-center font-bold rounded-xl shadow-lg border border-text transition-all active:scale-95"
-                >
-                  Get in Touch
-                </a>
               </nav>
             </motion.div>
           )}
