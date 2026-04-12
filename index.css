@@ -4,9 +4,10 @@
 @layer base {
   body {
     @apply bg-bg text-text font-sans antialiased;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
   }
-
-
 
   h1,
   h2,
@@ -14,7 +15,7 @@
   h4,
   h5,
   h6 {
-    @apply font-display text-text;
+    @apply font-display text-text tracking-tight;
   }
 }
 
@@ -23,10 +24,10 @@
     display: none;
   }
 
-  /* Custom Scrollbar styled dynamically with primary colors */
+  /* Minimal Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -34,19 +35,19 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/80 rounded-full;
+    @apply bg-slate-200 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary;
+    @apply bg-slate-300;
   }
 
-  .glass-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  .glass-card, .studio-card {
+    @apply bg-white border border-slate-200 shadow-sm transition-all duration-300;
+  }
+
+  .studio-card:hover {
+    @apply border-primary/50 shadow-md;
   }
 
   /* Force Custom Image Cursor */

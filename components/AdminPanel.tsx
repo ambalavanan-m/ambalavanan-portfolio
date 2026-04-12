@@ -149,43 +149,50 @@ const AdminPanel: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-                <div className="text-white text-xl animate-pulse">Loading Admin Panel...</div>
+            <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+                <div className="text-slate-400 text-xl font-bold animate-pulse uppercase tracking-[0.2em]">Authenticating...</div>
             </div>
         );
     }
 
     if (!isAuthenticated) {
         return (
-            <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
-                <div className="bg-slate-900 border border-white/10 p-8 rounded-2xl w-full max-w-md shadow-2xl">
-                    <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Admin Login</h2>
-                    <form onSubmit={handleLogin} className="space-y-6">
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-                                placeholder="Enter admin email"
-                                required
-                            />
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Password</label>
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="Enter admin password"
-                                required
-                            />
+            <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+                <div className="bg-white border border-slate-200 p-10 rounded-[2.5rem] w-full max-w-md shadow-sm studio-card">
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl font-extrabold text-text tracking-tight mb-2">Admin Portal</h2>
+                        <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Secure Infrastructure</p>
+                    </div>
+                    <form onSubmit={handleLogin} className="space-y-8">
+                        <div className="space-y-6">
+                            <div className="space-y-2">
+                                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Identity (Email)</label>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium"
+                                    placeholder="admin@ambalavanan.me"
+                                    required
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Access Key (Password)</label>
+                                <input
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium"
+                                    placeholder="••••••••"
+                                    required
+                                />
+                            </div>
                         </div>
                         <button
                             type="submit"
-                            className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-xl transition-all shadow-lg"
+                            className="w-full py-4 px-6 bg-text hover:bg-primary text-white font-bold rounded-xl transition-all shadow-lg shadow-text/5 hover:shadow-primary/20 transform active:scale-95"
                         >
-                            Login
+                            Execute Login
                         </button>
                     </form>
                 </div>
@@ -194,60 +201,47 @@ const AdminPanel: React.FC = () => {
     }
 
     return (
-        <div className="min-h-screen bg-slate-950 p-4 sm:p-8 text-white">
-            <div className="max-w-6xl mx-auto">
-                <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-0 mb-12">
+        <div className="min-h-screen bg-slate-50 p-4 sm:p-8 text-text transition-colors duration-300">
+            <div className="max-w-7xl mx-auto">
+                <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16 bg-white border border-slate-200 p-8 rounded-[2.5rem] shadow-sm">
                     <div>
-                        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                            Admin Review Panel
+                        <h1 className="text-3xl font-extrabold text-text tracking-tight uppercase">
+                            Admin <span className="text-primary italic">Control</span>
                         </h1>
-                        <p className="text-slate-400 mt-2 text-sm md:text-base">Manage and approve user testimonials</p>
+                        <p className="text-slate-500 mt-2 text-[10px] font-bold uppercase tracking-[0.2em]">System Management Infrastructure</p>
                     </div>
                     <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
-                        <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10">
-                            <span className="text-blue-400 font-bold">{reviews.length}</span> <span className="hidden sm:inline">Total Reviews</span><span className="sm:inline hidden">Reviews</span>
+                        <div className="px-5 py-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                            <span className="text-primary font-extrabold">{reviews.length}</span> <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400 ml-2">Total Logs</span>
                         </div>
                         <button
                             onClick={handleLogout}
-                            className="flex items-center gap-2 px-4 py-2 bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white rounded-lg transition-colors border border-red-500/20 font-medium"
+                            className="flex items-center gap-2 px-6 py-2.5 bg-white text-red-500 hover:bg-red-50 border border-red-100 rounded-xl transition-all font-bold text-xs uppercase tracking-widest shadow-sm"
                         >
-                            <LogOut size={18} />
-                            <span>Logout</span>
+                            <LogOut size={16} />
+                            <span>Exit</span>
                         </button>
                     </div>
                 </header>
 
-                <div className="flex flex-wrap gap-4 mb-8">
-                    <button
-                        onClick={() => setActiveTab('reviews')}
-                        className={`flex-1 sm:flex-none flex justify-center items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${
-                            activeTab === 'reviews' 
-                            ? 'bg-blue-600 text-white' 
-                            : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
-                        }`}
-                    >
-                        <MessageSquare size={20} /> Reviews
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('users')}
-                        className={`flex-1 sm:flex-none flex justify-center items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${
-                            activeTab === 'users' 
-                            ? 'bg-blue-600 text-white' 
-                            : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
-                        }`}
-                    >
-                        <Users size={20} /> Manage Users
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('resume')}
-                        className={`flex-1 sm:flex-none flex justify-center items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${
-                            activeTab === 'resume' 
-                            ? 'bg-blue-600 text-white' 
-                            : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
-                        }`}
-                    >
-                        <FileText size={20} /> Manage Resume
-                    </button>
+                <div className="flex flex-wrap gap-3 mb-12">
+                    {[
+                        { id: 'reviews', label: 'Reviews', icon: MessageSquare },
+                        { id: 'users', label: 'Identity', icon: Users },
+                        { id: 'resume', label: 'Resume', icon: FileText }
+                    ].map((tab) => (
+                        <button
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id as any)}
+                            className={`flex-1 sm:flex-none flex justify-center items-center gap-3 px-8 py-3.5 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all border ${
+                                activeTab === tab.id 
+                                ? 'bg-text text-white border-text shadow-lg' 
+                                : 'bg-white text-slate-500 border-slate-200 hover:border-text hover:text-text'
+                            }`}
+                        >
+                            <tab.icon size={16} /> {tab.label}
+                        </button>
+                    ))}
                 </div>
 
                 {activeTab === 'resume' ? (
@@ -255,70 +249,74 @@ const AdminPanel: React.FC = () => {
                 ) : activeTab === 'reviews' ? (
                     <div className="grid gap-6">
                         {reviews.length === 0 ? (
-                            <div className="text-center py-20 bg-white/5 rounded-2xl border border-dashed border-white/10">
-                                <p className="text-slate-500">No reviews found.</p>
+                            <div className="text-center py-24 bg-white rounded-[2.5rem] border border-dashed border-slate-200">
+                                <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">No active logs available.</p>
                             </div>
                         ) : (
                             reviews.map((review) => (
                                 <div
                                     key={review.id}
-                                    className={`p-6 rounded-2xl border transition-all duration-300 ${review.status === 'pending'
-                                        ? 'bg-blue-500/5 border-blue-500/20'
-                                        : 'bg-white/5 border-white/10'
+                                    className={`p-8 rounded-[2.5rem] border studio-card bg-white transition-all duration-300 ${review.status === 'pending'
+                                        ? 'border-primary/20 bg-primary/[0.02]'
+                                        : 'border-slate-200'
                                         }`}
                                 >
-                                    <div className="flex flex-col md:flex-row justify-between gap-6">
-                                        <div className="flex-grow space-y-4">
-                                            <div className="flex flex-wrap items-center gap-4">
-                                                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-bold text-xl shrink-0">
+                                    <div className="flex flex-col lg:flex-row justify-between gap-10">
+                                        <div className="flex-grow space-y-6">
+                                            <div className="flex flex-wrap items-center gap-5">
+                                                <div className="w-14 h-14 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center font-extrabold text-xl text-primary">
                                                     {review.name.charAt(0)}
                                                 </div>
                                                 <div className="min-w-0 flex-1">
-                                                    <h3 className="text-xl font-bold truncate">{review.name}</h3>
-                                                    <p className="text-sm text-slate-400 break-all sm:break-normal">{review.email}</p>
+                                                    <h3 className="text-xl font-extrabold text-text tracking-tight">{review.name}</h3>
+                                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{review.email}</p>
                                                 </div>
                                                 {review.status === 'pending' && (
-                                                    <span className="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-bold rounded-full flex items-center gap-1 shrink-0">
-                                                        <Clock size={12} /> Pending
+                                                    <span className="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded-full uppercase tracking-widest flex items-center gap-1.5 shrink-0">
+                                                        <Clock size={10} /> Pending Review
                                                     </span>
                                                 )}
                                             </div>
 
-                                            <StarRating rating={review.rating} />
+                                            <div className="flex items-center gap-1 text-yellow-400">
+                                                <StarRating rating={review.rating} />
+                                            </div>
 
-                                            <p className="text-slate-300 italic text-lg">
+                                            <p className="text-text font-medium text-lg leading-relaxed italic">
                                                 "{review.comment}"
                                             </p>
 
-                                            <p className="text-xs text-slate-500">
-                                                Submitted on: {review.createdAt?.toDate().toLocaleDateString()}
-                                            </p>
+                                            <div className="pt-4 border-t border-slate-100">
+                                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+                                                    Entry Timestamp: {review.createdAt?.toDate().toLocaleString()}
+                                                </p>
+                                            </div>
                                         </div>
 
-                                        <div className="flex flex-col sm:flex-row md:flex-col gap-3 justify-end whitespace-nowrap">
+                                        <div className="flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
                                             {review.status === 'pending' && (
                                                 <button
                                                     onClick={() => handleApprove(review.id)}
-                                                    className="w-full sm:flex-1 md:w-auto md:flex-none px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2"
+                                                    className="w-full lg:w-48 px-6 py-3 bg-text hover:bg-primary text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 text-xs uppercase tracking-widest"
                                                 >
-                                                    <Check size={18} /> Approve
+                                                    <Check size={16} /> Authorize
                                                 </button>
                                             )}
                                             <button
                                                 onClick={() => handlePin(review.id, review.isPinned)}
-                                                className={`w-full sm:flex-1 md:w-auto md:flex-none px-6 py-3 font-bold rounded-xl transition-all border flex items-center justify-center gap-2 ${review.isPinned
-                                                    ? 'bg-yellow-500/20 border-yellow-500/50 text-yellow-500 hover:bg-yellow-500/30'
-                                                    : 'bg-white/5 border-white/10 text-white hover:bg-white/10'
+                                                className={`w-full lg:w-48 px-6 py-3 font-bold rounded-xl transition-all border text-xs uppercase tracking-widest flex items-center justify-center gap-2 ${review.isPinned
+                                                    ? 'bg-yellow-50 border-yellow-200 text-yellow-600 hover:bg-yellow-100'
+                                                    : 'bg-white border-slate-200 text-slate-500 hover:border-text hover:text-text'
                                                     }`}
                                             >
-                                                {review.isPinned ? <PinOff size={18} /> : <Pin size={18} />}
-                                                {review.isPinned ? 'Unpin' : 'Pin Review'}
+                                                {review.isPinned ? <PinOff size={16} /> : <Pin size={16} />}
+                                                {review.isPinned ? 'Unpin Log' : 'Pin to Front'}
                                             </button>
                                             <button
                                                 onClick={() => handleDelete(review.id)}
-                                                className="w-full sm:flex-1 md:w-auto md:flex-none px-6 py-3 bg-red-600/10 hover:bg-red-600 text-red-500 hover:text-white font-bold rounded-xl transition-all border border-red-600/20 flex items-center justify-center gap-2"
+                                                className="w-full lg:w-48 px-6 py-3 bg-white hover:bg-red-50 text-red-500 font-bold rounded-xl transition-all border border-red-100 flex items-center justify-center gap-2 text-xs uppercase tracking-widest"
                                             >
-                                                <Trash2 size={18} /> Delete
+                                                <Trash2 size={16} /> Purge
                                             </button>
                                         </div>
                                     </div>
@@ -327,24 +325,24 @@ const AdminPanel: React.FC = () => {
                         )}
                     </div>
                 ) : (
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div className="bg-white/5 p-8 rounded-2xl border border-white/10">
-                            <h2 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-                                <Users className="text-blue-400" /> Total Admin Users: {adminUsers.length}
+                    <div className="grid lg:grid-cols-2 gap-10">
+                        <div className="bg-white p-10 rounded-[2.5rem] border border-slate-200 studio-card">
+                            <h2 className="text-xl font-extrabold text-text uppercase tracking-tight mb-8 flex items-center gap-3">
+                                <Users className="text-primary" /> Active Operators: {adminUsers.length}
                             </h2>
                             <div className="space-y-4">
                                 {adminUsers.length === 0 ? (
-                                    <p className="text-slate-500">No additional admin users found in database.</p>
+                                    <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">No secondary operators detected.</p>
                                 ) : (
                                     adminUsers.map(user => (
-                                        <div key={user.id} className="p-4 bg-slate-900 border border-white/10 rounded-xl flex items-center gap-4">
-                                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center font-bold shrink-0">
+                                        <div key={user.id} className="p-5 bg-slate-50 border border-slate-100 rounded-2xl flex items-center gap-4 transition-all hover:border-primary/20">
+                                            <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center font-bold text-primary shrink-0">
                                                 {user.email.charAt(0).toUpperCase()}
                                             </div>
                                             <div className="min-w-0">
-                                                <h3 className="text-white font-medium truncate">{user.email}</h3>
-                                                <p className="text-xs text-slate-500">
-                                                    Added: {user.createdAt?.toDate ? user.createdAt.toDate().toLocaleDateString() : 'Just now'}
+                                                <h3 className="text-text font-bold truncate tracking-tight">{user.email}</h3>
+                                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                                                    Registered: {user.createdAt?.toDate ? user.createdAt.toDate().toLocaleDateString() : 'Active'}
                                                 </p>
                                             </div>
                                         </div>
@@ -353,28 +351,28 @@ const AdminPanel: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="bg-white/5 p-8 rounded-2xl border border-white/10">
-                            <h2 className="text-2xl font-bold mb-6 text-white">Add New Admin</h2>
-                            <form onSubmit={handleAddAdmin} className="space-y-6">
-                                <div>
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">New Admin Email</label>
+                        <div className="bg-white p-10 rounded-[2.5rem] border border-slate-200 studio-card">
+                            <h2 className="text-xl font-extrabold text-text uppercase tracking-tight mb-8">Provision New Operator</h2>
+                            <form onSubmit={handleAddAdmin} className="space-y-8">
+                                <div className="space-y-2">
+                                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Operator Identity (Email)</label>
                                     <input
                                         type="email"
                                         value={newAdminEmail}
                                         onChange={(e) => setNewAdminEmail(e.target.value)}
-                                        className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        placeholder="admin@example.com"
+                                        className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium"
+                                        placeholder="operator@system.infra"
                                         required
                                     />
                                 </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">New Admin Password</label>
+                                <div className="space-y-2">
+                                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Security Token (Password)</label>
                                     <input
                                         type="password"
                                         value={newAdminPassword}
                                         onChange={(e) => setNewAdminPassword(e.target.value)}
-                                        className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        placeholder="Secure password (min. 6 chars)"
+                                        className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium"
+                                        placeholder="Min. 6 alphanumeric"
                                         required
                                         minLength={6}
                                     />
@@ -382,9 +380,9 @@ const AdminPanel: React.FC = () => {
                                 <button
                                     type="submit"
                                     disabled={isCreatingUser}
-                                    className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-xl transition-all disabled:opacity-50 flex justify-center items-center gap-2 shadow-lg"
+                                    className="w-full py-4 px-6 bg-text hover:bg-primary text-white font-bold rounded-xl transition-all shadow-lg shadow-text/5 hover:shadow-primary/20 flex justify-center items-center gap-3 active:scale-95 disabled:opacity-50"
                                 >
-                                    {isCreatingUser ? 'Creating...' : 'Create Admin User'}
+                                    {isCreatingUser ? 'Processing...' : 'Provision Operator'}
                                 </button>
                             </form>
                         </div>

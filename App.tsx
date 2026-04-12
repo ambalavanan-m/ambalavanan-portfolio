@@ -9,7 +9,6 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import BottomNavbar from './components/BottomNavbar';
 import { ThemeProvider } from './components/ThemeContext';
 import FloatingShare from './components/FloatingShare';
 import Seo from './components/Seo';
@@ -39,7 +38,6 @@ const Portfolio: React.FC = () => (
         <Projects />
         <Contact />
       </main>
-      <BottomNavbar />
       <Footer />
     </motion.div>
   </>

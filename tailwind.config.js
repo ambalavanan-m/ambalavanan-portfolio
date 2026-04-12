@@ -10,17 +10,17 @@ export default {
     extend: {
       colors: {
         bg: '#ffffff',
-        surface: '#f8fafc',
-        primary: '#2563eb',
+        surface: '#fcfcfc',
+        primary: '#2563eb', // Electric Blue
         'primary-hover': '#1d4ed8',
-        secondary: '#0891b2',
-        'secondary-hover': '#0e7490',
-        text: '#0f172a',
-        muted: '#64748b',
+        secondary: '#64748b', // Slate
+        'secondary-hover': '#475569',
+        text: '#020617', // Deepest Navy
+        muted: '#94a3b8',
       },
       fontFamily: {
-        sans: ['"Segoe UI"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Trebuchet MS"', '"Segoe UI"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

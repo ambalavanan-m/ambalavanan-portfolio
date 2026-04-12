@@ -71,26 +71,26 @@ const About: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-24 bg-white transition-colors duration-300 relative">
-      <div className="container mx-auto px-6 space-y-20">
+    <section id="about" className="py-24 bg-transparent transition-colors duration-300 relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-7xl space-y-24">
         
         {/* Row 1: Animation & Content */}
-        <div className="flex flex-col md:flex-row items-center gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-20">
           {/* Left: Animation Area */}
-          <div className="w-full md:w-1/2 flex justify-center">
+          <div className="w-full lg:w-1/2 flex justify-center">
             <FadeIn direction="up">
-              <div className="relative w-full max-w-md aspect-square rounded-3xl bg-slate-50 p-8 flex items-center justify-center overflow-hidden group shadow-inner">
+              <div className="relative w-full max-w-md aspect-square rounded-[2.5rem] bg-slate-50 border border-slate-200 p-8 flex items-center justify-center overflow-hidden group">
                 {/* Floating Elements */}
                 <img
                   src="https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/Technologist_qocoht.png"
-                  alt="Coding Animation"
-                  className="w-64 h-64 object-contain animate-float drop-shadow-xl transition-all duration-500 transform group-hover:scale-110"
+                  alt="Technologist"
+                  className="w-64 h-64 object-contain animate-float drop-shadow-md transition-all duration-500 transform group-hover:scale-110"
                 />
 
-                <div className="absolute bottom-10 left-10 bg-white/90 backdrop-blur-md border border-slate-100 p-4 rounded-xl shadow-xl animate-float" style={{ animationDelay: '1s' }}>
+                <div className="absolute bottom-10 left-10 bg-white border border-slate-200 p-3.5 rounded-xl shadow-sm animate-float" style={{ animationDelay: '1s' }}>
                   <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                    <span className="text-sm font-mono text-slate-600">Open to opportunities</span>
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Available now</span>
                   </div>
                 </div>
               </div>
@@ -98,28 +98,28 @@ const About: React.FC = () => {
           </div>
 
           {/* Right: Content */}
-          <div className="w-full md:w-1/2 space-y-8">
+          <div className="w-full lg:w-1/2 space-y-8 lg:pr-4">
             <FadeIn direction="up" delay={200}>
-              <div className="space-y-4">
-                <p className="text-primary font-bold tracking-widest uppercase text-sm">About Me</p>
-                <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight">Software Engineer focused on practical, scalable products</h2>
+              <div className="space-y-6">
+                <p className="text-primary font-bold tracking-[0.2em] uppercase text-xs">Profile</p>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-text leading-[1.1] tracking-tight">Software engineering with a focus on resilient <span className="text-primary">architecture</span>.</h2>
               </div>
 
-              <div className="text-slate-600 space-y-4 leading-relaxed text-lg mt-6">
+              <div className="text-slate-500 space-y-6 leading-relaxed text-lg mt-8 font-normal">
                 <p>
-                  Results-oriented <strong className="text-slate-900">Software Engineer</strong> and <strong className="text-slate-900">AWS Certified Cloud Practitioner</strong> with a strong foundation in <span className="text-primary font-medium">React, Java, Python, C++, and modern web technologies</span>. My work spans product-focused interfaces, full-stack implementation, and clean software architecture backed by <strong className="text-slate-800">DSA, OOP, DBMS, SQL</strong>, and collaborative tooling like <strong className="text-slate-800">Git and GitHub</strong>.
+                  I am a <span className="text-text font-semibold">Software Engineer</span> and <span className="text-text font-semibold underline decoration-primary/30 underline-offset-4">AWS Certified Cloud Practitioner</span> specialized in building modular, high-performance applications. My expertise covers the full development lifecycle, from system design to cloud deployment.
                 </p>
                 <p>
-                  I enjoy building high-impact applications across <strong className="text-slate-800">AWS cloud architecture</strong>, <strong className="text-slate-800">machine learning workflows</strong>, and <strong className="text-slate-800">blockchain systems</strong>. That mix helps me turn technical ideas into usable products that are efficient, trustworthy, and easy to navigate.
+                  My technical stack is centered around <strong className="text-text">React, Java, and Python</strong>, with a deep focus on scalability and security. I leverage AWS infrastructure to build products that are not just functional, but built to evolve with modern business needs.
                 </p>
               </div>
 
-              <div className="pt-6 flex justify-start">
+              <div className="pt-8 flex justify-start">
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 text-primary hover:text-secondary font-bold transition-colors group"
+                  className="inline-flex items-center gap-2 text-text hover:text-primary font-bold transition-all group tracking-tight"
                 >
-                  Get in touch <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  Start a conversation <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
             </FadeIn>
@@ -127,73 +127,71 @@ const About: React.FC = () => {
         </div>
 
         {/* Row 2: Feedback & Badges */}
-        <div className="flex flex-col md:flex-row items-stretch gap-16">
+        <div className="flex flex-col lg:flex-row items-stretch gap-12">
           {/* Left: Community Feedback */}
-          <div className="w-full md:w-1/2 flex flex-col">
+          <div className="w-full lg:w-3/5 flex flex-col">
             <FadeIn direction="up" delay={300} className="flex-1 flex flex-col">
-              <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-6 border-b border-slate-100 pb-3 flex items-center justify-between">
-                <span>
-                  <MessageSquare size={16} className="inline-flex mr-2 text-primary" />
-                  Community Feedback
+              <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-6 border-b border-slate-100 pb-4 flex items-center justify-between">
+                <span className="flex items-center gap-2">
+                   Recognition
                 </span>
-                <span className="text-xs font-medium text-slate-400 normal-case">{totalReviews} Reviews</span>
+                <span className="font-medium text-slate-400 normal-case">{totalReviews} Verified Entries</span>
               </h3>
 
               <div className="grid grid-cols-1 gap-6 flex-1">
                 {/* Stats Card */}
-                <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex items-center justify-between shadow-sm">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-600">
-                      <Star size={24} fill="currentColor" />
+                <div className="studio-card rounded-2xl p-8 flex items-center justify-between">
+                  <div className="flex items-center gap-5">
+                    <div className="w-14 h-14 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-primary">
+                      <Star size={24} className="fill-current" />
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-slate-900">{averageRating || '0.0'}</p>
-                      <p className="text-xs text-slate-500 font-medium">Average Rating</p>
+                      <p className="text-3xl font-extrabold text-text tracking-tighter">{averageRating || '0.0'}</p>
+                      <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Global Rating</p>
                     </div>
                   </div>
-                  <div className="flex gap-1">
+                  <div className="hidden sm:flex gap-1">
                     <StarRating rating={averageRating || 0} />
                   </div>
                 </div>
 
                 {/* Pinned Testimonial Carousel */}
                 {pinnedReviews.length > 0 && (
-                  <div className="relative overflow-hidden group flex-1 flex flex-col justify-center">
+                  <div className="relative group flex-1 flex flex-col justify-center min-h-[240px]">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={currentIndex}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className="relative bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-100/50 rounded-2xl p-8 overflow-hidden flex-1 flex flex-col justify-between"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className="studio-card rounded-2xl p-10 overflow-hidden flex-1 flex flex-col justify-between hover:border-primary/20"
                       >
-                        <div className="absolute top-6 right-6 text-blue-400 opacity-20 group-hover:opacity-40 transition-opacity">
-                          <Quote size={40} />
+                        <div className="absolute top-8 right-8 text-primary/10">
+                          <MessageSquare size={32} />
                         </div>
-                        <div className="absolute -left-1 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"></div>
 
-                        <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center justify-between mb-8">
                           <div className="flex items-center gap-2 text-primary">
-                            <Pin size={14} className="fill-current" />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">Featured Review</span>
+                            <Pin size={12} className="fill-current" />
+                            <span className="text-[9px] font-bold uppercase tracking-[0.2em]">Featured Case</span>
                           </div>
-                          <div className="flex gap-1">
-                            <StarRating rating={pinnedReviews[currentIndex].rating} />
-                          </div>
+                   
                         </div>
 
-                        <p className="text-slate-700 italic text-sm md:text-base leading-relaxed mb-6 relative z-10 flex-1 flex items-center">
+                        <p className="text-text font-medium text-lg md:text-xl leading-snug mb-8 relative z-10 flex-1 flex items-center tracking-tight">
                           "{pinnedReviews[currentIndex].comment}"
                         </p>
 
                         <div className="flex items-center gap-4 mt-auto">
-                          <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                          <div className="w-10 h-10 rounded-lg bg-text text-white flex items-center justify-center font-bold text-sm shadow-sm">
                             {pinnedReviews[currentIndex].name.charAt(0)}
                           </div>
                           <div>
-                            <p className="text-sm font-bold text-slate-900">{pinnedReviews[currentIndex].name}</p>
-                            <p className="text-xs text-slate-500 mt-0.5">Verified Client</p>
+                            <p className="text-sm font-bold text-text uppercase tracking-tight">{pinnedReviews[currentIndex].name}</p>
+                            <div className="flex gap-0.5 mt-1">
+                               <StarRating rating={pinnedReviews[currentIndex].rating} />
+                            </div>
                           </div>
                         </div>
                       </motion.div>
@@ -202,33 +200,21 @@ const About: React.FC = () => {
                     {/* Navigation Controls */}
                     {pinnedReviews.length > 1 && (
                       <>
-                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute -left-6 inset-y-0 flex items-center opacity-0 group-hover:opacity-100 transition-all">
                           <button
                             onClick={prevSlide}
-                            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-colors shadow-sm"
+                            className="w-12 h-12 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary transition-all shadow-sm hover:translate-x-1"
                           >
                             <ChevronLeft size={20} />
                           </button>
                         </div>
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute -right-6 inset-y-0 flex items-center opacity-0 group-hover:opacity-100 transition-all">
                           <button
                             onClick={nextSlide}
-                            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-colors shadow-sm"
+                            className="w-12 h-12 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary transition-all shadow-sm hover:-translate-x-1"
                           >
                             <ChevronRight size={20} />
                           </button>
-                        </div>
-
-                        {/* Dots Indicator */}
-                        <div className="flex justify-center gap-2 mt-5">
-                          {pinnedReviews.map((_, idx) => (
-                            <button
-                              key={idx}
-                              onClick={() => setCurrentIndex(idx)}
-                              className={`w-2 h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? 'bg-primary w-6' : 'bg-slate-300 hover:bg-slate-400'
-                                }`}
-                            />
-                          ))}
                         </div>
                       </>
                     )}
@@ -239,35 +225,37 @@ const About: React.FC = () => {
           </div>
 
           {/* Right: Certifications & Badges */}
-          <div className="w-full md:w-1/2 flex flex-col">
+          <div className="w-full lg:w-2/5 flex flex-col">
             <FadeIn direction="up" delay={400} className="flex-1 flex flex-col">
-              <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-6 border-b border-slate-100 pb-3 flex items-center gap-2">
-                <Award size={16} className="text-primary" />
-                Certifications & Badges
+              <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-6 border-b border-slate-100 pb-4 flex items-center gap-2">
+                Validation
               </h3>
-              <div className="relative group flex-1 flex flex-col justify-center items-center bg-slate-50/50 border border-slate-100 rounded-2xl p-8">
+              <div className="studio-card rounded-2xl p-10 flex flex-col items-center justify-center relative group flex-1">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={certIndex}
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.05 }}
-                    transition={{ duration: 0.4 }}
+                    exit={{ opacity: 0, scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
                     className="flex justify-center w-full"
                   >
                     {CERTIFICATIONS[certIndex].image ? (
-                      <div className="flex flex-col items-center justify-center p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow w-full max-w-sm">
+                      <div className="flex flex-col items-center justify-center w-full">
                         <img 
                           src={CERTIFICATIONS[certIndex].image} 
                           alt={CERTIFICATIONS[certIndex].title}
-                          className="w-[240px] h-[180px] object-contain"
+                          className="w-full h-[220px] object-contain transition-all duration-500"
                         />
-                        <p className="mt-6 text-sm font-bold text-slate-400 uppercase tracking-widest text-center">
-                          {CERTIFICATIONS[certIndex].issuer}
-                        </p>
+                        <div className="mt-8 text-center space-y-1">
+                           <p className="text-text font-bold tracking-tight">{CERTIFICATIONS[certIndex].title}</p>
+                           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                            {CERTIFICATIONS[certIndex].issuer}
+                           </p>
+                        </div>
                       </div>
                     ) : (
-                      <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                      <div className="bg-white p-4 rounded-xl border border-slate-50 shadow-sm transition-all duration-500">
                         <CredlyBadge 
                           badgeId={CERTIFICATIONS[certIndex].id || ''} 
                           width={240}
@@ -279,20 +267,20 @@ const About: React.FC = () => {
                 </AnimatePresence>
 
                 {CERTIFICATIONS.length > 1 && (
-                  <>
+                  <div className="flex gap-3 mt-10">
                     <button
                       onClick={prevCert}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-all opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 shadow-sm"
+                      className="w-10 h-10 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 hover:text-text hover:bg-slate-50 transition-all"
                     >
-                      <ChevronLeft size={20} />
+                      <ChevronLeft size={18} />
                     </button>
                     <button
                       onClick={nextCert}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary transition-all opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 shadow-sm"
+                      className="w-10 h-10 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 hover:text-text hover:bg-slate-50 transition-all"
                     >
-                      <ChevronRight size={20} />
+                      <ChevronRight size={18} />
                     </button>
-                  </>
+                  </div>
                 )}
               </div>
             </FadeIn>

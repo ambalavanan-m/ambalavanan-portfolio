@@ -137,160 +137,205 @@ const ResumeManager: React.FC = () => {
 
 
     return (
-        <div className="bg-slate-900 border border-white/10 rounded-2xl p-6 md:p-8 space-y-8">
-            <div className="flex justify-between items-center pb-4 border-b border-white/10">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Manage Resume</h2>
-                <div className="flex flex-wrap gap-4 mt-4 sm:mt-0">
+        <div className="bg-white border border-slate-200 rounded-[2.5rem] p-8 md:p-12 space-y-12 shadow-sm studio-card">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center pb-8 border-b border-slate-100 gap-6">
+                <div>
+                    <h2 className="text-2xl font-extrabold text-text uppercase tracking-tight">Resume <span className="text-primary italic">Engine</span></h2>
+                    <p className="text-slate-500 mt-2 text-[10px] font-bold uppercase tracking-widest">Dynamic Document Construction</p>
+                </div>
+                <div className="flex flex-wrap gap-3">
                     <button
                         onClick={handleDownloadPdf}
-                        className="px-4 py-2 bg-purple-600/20 text-purple-400 hover:bg-purple-600 hover:text-white rounded-lg transition-all border border-purple-500/30 text-sm font-bold flex items-center gap-2"
+                        className="px-5 py-2.5 bg-purple-50 text-purple-600 hover:bg-purple-600 hover:text-white rounded-xl transition-all border border-purple-100 text-[10px] font-extrabold uppercase tracking-widest flex items-center gap-2"
                     >
-                        <FileText size={16} /> Premium PDF
+                        <FileText size={14} /> Global PDF
                     </button>
                     <button
                         onClick={handleDownloadDocx}
-                        className="px-4 py-2 bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white rounded-lg transition-all border border-blue-500/30 text-sm font-bold flex items-center gap-2"
+                        className="px-5 py-2.5 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white rounded-xl transition-all border border-blue-100 text-[10px] font-extrabold uppercase tracking-widest flex items-center gap-2"
                     >
-                        <FileText size={16} /> MS Word
+                        <FileText size={14} /> MS Word
                     </button>
                     <button 
                         onClick={seedDefault}
-                        className="px-4 py-2 bg-yellow-500/20 text-yellow-500 hover:bg-yellow-500 hover:text-white rounded-lg transition-colors border border-yellow-500/30 text-sm font-bold flex items-center gap-2"
+                        className="px-5 py-2.5 bg-yellow-50 text-yellow-600 hover:bg-yellow-500 hover:text-white rounded-xl transition-colors border border-yellow-100 text-[10px] font-extrabold uppercase tracking-widest flex items-center gap-2"
                     >
-                        <Download size={16} /> Seed Default
+                        <Download size={14} /> Reset
                     </button>
 
                     <button 
                         onClick={handleSave}
                         disabled={saving}
-                        className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors font-bold flex items-center gap-2 disabled:opacity-50"
+                        className="px-6 py-2.5 bg-text hover:bg-primary text-white rounded-xl transition-colors font-extrabold text-[10px] uppercase tracking-widest flex items-center gap-2 disabled:opacity-50 shadow-lg shadow-text/5"
                     >
-                        <Save size={16} /> {saving ? 'Saving...' : 'Save Changes'}
+                        <Save size={14} /> {saving ? 'Syncing...' : 'Deploy Changes'}
                     </button>
                 </div>
             </div>
 
             {/* Personal Info */}
-            <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-white">Personal Details</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Name" value={resumeData.name} onChange={e => setResumeData({...resumeData, name: e.target.value})} className="bg-slate-800 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none w-full" />
-                    <input type="text" placeholder="Job Title" value={resumeData.title} onChange={e => setResumeData({...resumeData, title: e.target.value})} className="bg-slate-800 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none w-full" />
-                    <input type="text" placeholder="Phone" value={resumeData.phone} onChange={e => setResumeData({...resumeData, phone: e.target.value})} className="bg-slate-800 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none w-full" />
-                    <input type="email" placeholder="Email" value={resumeData.email} onChange={e => setResumeData({...resumeData, email: e.target.value})} className="bg-slate-800 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none w-full" />
-                    <input type="text" placeholder="GitHub Username (e.g. ambalavanan01)" value={resumeData.github} onChange={e => setResumeData({...resumeData, github: e.target.value})} className="bg-slate-800 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none w-full" />
-                    <input type="text" placeholder="LinkedIn Username (e.g. ambalavanan-m)" value={resumeData.linkedin} onChange={e => setResumeData({...resumeData, linkedin: e.target.value})} className="bg-slate-800 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none w-full" />
+            <div className="space-y-6">
+                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] pb-4 border-b border-slate-50">Identity Matrix</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="space-y-2">
+                        <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
+                        <input type="text" placeholder="Name" value={resumeData.name} onChange={e => setResumeData({...resumeData, name: e.target.value})} className="bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium w-full" />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Designation</label>
+                        <input type="text" placeholder="Job Title" value={resumeData.title} onChange={e => setResumeData({...resumeData, title: e.target.value})} className="bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium w-full" />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Comm Link (Phone)</label>
+                        <input type="text" placeholder="Phone" value={resumeData.phone} onChange={e => setResumeData({...resumeData, phone: e.target.value})} className="bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium w-full" />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Internal Mail</label>
+                        <input type="email" placeholder="Email" value={resumeData.email} onChange={e => setResumeData({...resumeData, email: e.target.value})} className="bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium w-full" />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Git Repository</label>
+                        <input type="text" placeholder="GitHub Username" value={resumeData.github} onChange={e => setResumeData({...resumeData, github: e.target.value})} className="bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium w-full" />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Professional Link</label>
+                        <input type="text" placeholder="LinkedIn Username" value={resumeData.linkedin} onChange={e => setResumeData({...resumeData, linkedin: e.target.value})} className="bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium w-full" />
+                    </div>
                 </div>
             </div>
 
             {/* Summary */}
-            <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-white">Professional Summary</h3>
+            <div className="space-y-6">
+                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] pb-4 border-b border-slate-50">Executive Abstract</h3>
                 <textarea 
                     rows={5}
                     value={resumeData.summary} 
                     onChange={e => setResumeData({...resumeData, summary: e.target.value})} 
-                    className="bg-slate-800 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none w-full resize-none" 
+                    className="bg-slate-50 border border-slate-200 rounded-[1.5rem] px-6 py-5 text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium w-full resize-none leading-relaxed" 
                     placeholder="Enter your professional summary..."
                 />
             </div>
 
             {/* Skills */}
-            <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                    <h3 className="text-xl font-semibold text-white">Technical Skills</h3>
-                    <button onClick={() => setResumeData({...resumeData, skills: [...resumeData.skills, { id: crypto.randomUUID(), category: 'New Category', items: '' }]})} className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-sm font-bold"><Plus size={16}/> Add Category</button>
+            <div className="space-y-6">
+                <div className="flex justify-between items-center pb-4 border-b border-slate-50">
+                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em]">Competency Modules</h3>
+                    <button onClick={() => setResumeData({...resumeData, skills: [...resumeData.skills, { id: crypto.randomUUID(), category: 'New Module', items: '' }]})} className="text-primary hover:text-primary-hover flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest"><Plus size={14}/> Add Module</button>
                 </div>
-                {resumeData.skills.map((skill, index) => (
-                    <div key={skill.id} className="bg-slate-800 p-4 rounded-xl flex flex-col md:flex-row gap-4 items-start md:items-center">
-                        <input type="text" placeholder="Category (e.g. Languages)" value={skill.category} onChange={e => {
-                            const newSkills = [...resumeData.skills];
-                            newSkills[index].category = e.target.value;
-                            setResumeData({...resumeData, skills: newSkills});
-                        }} className="bg-slate-700 px-3 py-2 rounded-lg text-white w-full md:w-1/3 outline-none" />
-                        <input type="text" placeholder="Skills (comma separated)" value={skill.items} onChange={e => {
-                            const newSkills = [...resumeData.skills];
-                            newSkills[index].items = e.target.value;
-                            setResumeData({...resumeData, skills: newSkills});
-                        }} className="bg-slate-700 px-3 py-2 rounded-lg text-white w-full outline-none" />
-                        <button onClick={() => {
-                            setResumeData({...resumeData, skills: resumeData.skills.filter(s => s.id !== skill.id)});
-                        }} className="text-red-500 p-2 hover:bg-red-500/10 rounded-lg"><Trash2 size={18} /></button>
-                    </div>
-                ))}
+                <div className="grid gap-4">
+                    {resumeData.skills.map((skill, index) => (
+                        <div key={skill.id} className="bg-white border border-slate-100 p-5 rounded-2xl flex flex-col md:flex-row gap-5 items-start md:items-center hover:border-primary/10 transition-all">
+                            <input type="text" placeholder="Category" value={skill.category} onChange={e => {
+                                const newSkills = [...resumeData.skills];
+                                newSkills[index].category = e.target.value;
+                                setResumeData({...resumeData, skills: newSkills});
+                            }} className="bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-100 text-text text-sm font-bold w-full md:w-1/3 outline-none focus:border-primary/30" />
+                            <input type="text" placeholder="Items (comma-separated)" value={skill.items} onChange={e => {
+                                const newSkills = [...resumeData.skills];
+                                newSkills[index].items = e.target.value;
+                                setResumeData({...resumeData, skills: newSkills});
+                            }} className="bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-100 text-text text-sm font-medium w-full outline-none focus:border-primary/30" />
+                            <button onClick={() => {
+                                setResumeData({...resumeData, skills: resumeData.skills.filter(s => s.id !== skill.id)});
+                            }} className="text-red-400 p-2.5 hover:bg-red-50 rounded-xl transition-all border border-transparent hover:border-red-100"><Trash2 size={18} /></button>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             {/* Education */}
-            <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                    <h3 className="text-xl font-semibold text-white">Education</h3>
-                    <button onClick={() => setResumeData({...resumeData, education: [...resumeData.education, { id: crypto.randomUUID(), degree: '', institution: '', year: '' }]})} className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-sm font-bold"><Plus size={16}/> Add Education</button>
+            <div className="space-y-6">
+                <div className="flex justify-between items-center pb-4 border-b border-slate-50">
+                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em]">Academic Records</h3>
+                    <button onClick={() => setResumeData({...resumeData, education: [...resumeData.education, { id: crypto.randomUUID(), degree: '', institution: '', year: '' }]})} className="text-primary hover:text-primary-hover flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest"><Plus size={14}/> Add Entry</button>
                 </div>
-                {resumeData.education.map((edu, index) => (
-                    <div key={edu.id} className="bg-slate-800 p-4 rounded-xl relative group">
-                        <button onClick={() => {
-                            setResumeData({...resumeData, education: resumeData.education.filter(e => e.id !== edu.id)});
-                        }} className="absolute top-4 right-4 text-red-500 p-2 hover:bg-red-500/10 rounded-lg"><Trash2 size={18} /></button>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pr-12">
-                            <input type="text" placeholder="Degree (e.g. BSc Computer Science)" value={edu.degree} onChange={e => {
-                                const newEdu = [...resumeData.education];
-                                newEdu[index].degree = e.target.value;
-                                setResumeData({...resumeData, education: newEdu});
-                            }} className="bg-slate-700 px-3 py-2 rounded-lg text-white outline-none w-full" />
-                            <input type="text" placeholder="Institution" value={edu.institution} onChange={e => {
-                                const newEdu = [...resumeData.education];
-                                newEdu[index].institution = e.target.value;
-                                setResumeData({...resumeData, education: newEdu});
-                            }} className="bg-slate-700 px-3 py-2 rounded-lg text-white outline-none w-full" />
-                            <input type="text" placeholder="Year (e.g. Expected Graduation: 2027)" value={edu.year} onChange={e => {
-                                const newEdu = [...resumeData.education];
-                                newEdu[index].year = e.target.value;
-                                setResumeData({...resumeData, education: newEdu});
-                            }} className="bg-slate-700 px-3 py-2 rounded-lg text-white outline-none w-full" />
+                <div className="grid gap-4">
+                    {resumeData.education.map((edu, index) => (
+                        <div key={edu.id} className="bg-white border border-slate-100 p-6 rounded-2xl relative group hover:border-primary/10 transition-all">
+                            <button onClick={() => {
+                                setResumeData({...resumeData, education: resumeData.education.filter(e => e.id !== edu.id)});
+                            }} className="absolute top-4 right-4 text-red-400 p-2.5 hover:bg-red-50 rounded-xl border border-transparent hover:border-red-100 transition-all"><Trash2 size={18} /></button>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pr-12">
+                                <div className="space-y-1.5">
+                                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Degree / Certification</label>
+                                    <input type="text" value={edu.degree} onChange={e => {
+                                        const newEdu = [...resumeData.education];
+                                        newEdu[index].degree = e.target.value;
+                                        setResumeData({...resumeData, education: newEdu});
+                                    }} className="bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-100 text-text text-sm font-bold w-full outline-none focus:border-primary/30" />
+                                </div>
+                                <div className="space-y-1.5">
+                                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Institution</label>
+                                    <input type="text" value={edu.institution} onChange={e => {
+                                        const newEdu = [...resumeData.education];
+                                        newEdu[index].institution = e.target.value;
+                                        setResumeData({...resumeData, education: newEdu});
+                                    }} className="bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-100 text-text text-sm font-medium w-full outline-none focus:border-primary/30" />
+                                </div>
+                                <div className="space-y-1.5">
+                                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Timeline</label>
+                                    <input type="text" value={edu.year} onChange={e => {
+                                        const newEdu = [...resumeData.education];
+                                        newEdu[index].year = e.target.value;
+                                        setResumeData({...resumeData, education: newEdu});
+                                    }} className="bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-100 text-text text-sm font-medium w-full outline-none focus:border-primary/30" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
 
             {/* Projects */}
-            <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                    <h3 className="text-xl font-semibold text-white">Projects</h3>
-                    <button onClick={() => setResumeData({...resumeData, projects: [...resumeData.projects, { id: crypto.randomUUID(), title: '', techStack: '', description: '' }]})} className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-sm font-bold"><Plus size={16}/> Add Project</button>
+            <div className="space-y-6">
+                <div className="flex justify-between items-center pb-4 border-b border-slate-50">
+                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em]">Project Deployments</h3>
+                    <button onClick={() => setResumeData({...resumeData, projects: [...resumeData.projects, { id: crypto.randomUUID(), title: '', techStack: '', description: '' }]})} className="text-primary hover:text-primary-hover flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest"><Plus size={14}/> Add Project</button>
                 </div>
-                {resumeData.projects.map((proj, index) => (
-                    <div key={proj.id} className="bg-slate-800 p-4 rounded-xl relative group flex flex-col gap-3">
-                        <button onClick={() => {
-                            setResumeData({...resumeData, projects: resumeData.projects.filter(p => p.id !== proj.id)});
-                        }} className="absolute top-4 right-4 text-red-500 p-2 hover:bg-red-500/10 rounded-lg"><Trash2 size={18} /></button>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pr-12">
-                            <input type="text" placeholder="Project Title" value={proj.title} onChange={e => {
-                                const newProj = [...resumeData.projects];
-                                newProj[index].title = e.target.value;
-                                setResumeData({...resumeData, projects: newProj});
-                            }} className="bg-slate-700 px-3 py-2 rounded-lg text-white outline-none w-full" />
-                            <input type="text" placeholder="Tech Stack (e.g. React, Node.js)" value={proj.techStack} onChange={e => {
-                                const newProj = [...resumeData.projects];
-                                newProj[index].techStack = e.target.value;
-                                setResumeData({...resumeData, projects: newProj});
-                            }} className="bg-slate-700 px-3 py-2 rounded-lg text-white outline-none w-full" />
+                <div className="grid gap-6">
+                    {resumeData.projects.map((proj, index) => (
+                        <div key={proj.id} className="bg-white border border-slate-100 p-8 rounded-[2rem] relative group space-y-5 hover:border-primary/10 transition-all">
+                            <button onClick={() => {
+                                setResumeData({...resumeData, projects: resumeData.projects.filter(p => p.id !== proj.id)});
+                            }} className="absolute top-4 right-4 text-red-400 p-2.5 hover:bg-red-50 rounded-xl border border-transparent hover:border-red-100 transition-all"><Trash2 size={18} /></button>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pr-12">
+                                <div className="space-y-1.5">
+                                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Title</label>
+                                    <input type="text" value={proj.title} onChange={e => {
+                                        const newProj = [...resumeData.projects];
+                                        newProj[index].title = e.target.value;
+                                        setResumeData({...resumeData, projects: newProj});
+                                    }} className="bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-100 text-text text-sm font-bold w-full outline-none focus:border-primary/30" />
+                                </div>
+                                <div className="space-y-1.5">
+                                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Tech Stack</label>
+                                    <input type="text" value={proj.techStack} onChange={e => {
+                                        const newProj = [...resumeData.projects];
+                                        newProj[index].techStack = e.target.value;
+                                        setResumeData({...resumeData, projects: newProj});
+                                    }} className="bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-100 text-text text-sm font-medium w-full outline-none focus:border-primary/30" />
+                                </div>
+                            </div>
+                            <div className="space-y-1.5">
+                                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Operation Description</label>
+                                <textarea rows={3} value={proj.description} onChange={e => {
+                                        const newProj = [...resumeData.projects];
+                                        newProj[index].description = e.target.value;
+                                        setResumeData({...resumeData, projects: newProj});
+                                    }} className="bg-slate-50 px-5 py-4 rounded-2xl border border-slate-100 text-text text-sm font-medium w-full outline-none focus:border-primary/30 resize-none leading-relaxed" />
+                            </div>
                         </div>
-                        <textarea rows={3} placeholder="Project Description" value={proj.description} onChange={e => {
-                                const newProj = [...resumeData.projects];
-                                newProj[index].description = e.target.value;
-                                setResumeData({...resumeData, projects: newProj});
-                            }} className="bg-slate-700 px-3 py-2 rounded-lg text-white outline-none w-full resize-none" />
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
             
-            <div className="pt-4 flex justify-end">
+            <div className="pt-10 flex justify-end">
                 <button 
                     onClick={handleSave}
                     disabled={saving}
-                    className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition-colors font-bold flex items-center gap-2 shadow-lg disabled:opacity-50"
+                    className="px-12 py-4 bg-text hover:bg-primary text-white rounded-2xl transition-all font-extrabold text-xs uppercase tracking-[0.2em] flex items-center gap-3 shadow-xl shadow-text/5 active:scale-95 disabled:opacity-50"
                 >
-                    <Save size={20} /> {saving ? 'Saving...' : 'Save All Changes'}
+                    <Save size={18} /> {saving ? 'Committing...' : 'Save Current State'}
                 </button>
             </div>
         </div>

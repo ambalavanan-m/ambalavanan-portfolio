@@ -4,62 +4,64 @@ import { NAV_LINKS } from '../constants';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-50  border-t border-slate-200  transition-colors duration-300 pt-16 pb-8">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10 mb-12">
+    <footer className="bg-transparent border-t border-slate-100 transition-colors duration-300 pt-20 pb-12">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
 
           {/* Brand - Left */}
-          <div className="text-center md:text-left">
-            <h2 className="text-2xl font-bold text-primary font-display mb-1">Ambalavanan</h2>
-            <p className="text-slate-500 font-medium text-sm">Full-Stack Developer</p>
+          <div className="text-left">
+            <h2 className="text-xl font-extrabold text-text tracking-tight mb-2 uppercase">Ambalavanan</h2>
+            <p className="text-slate-400 font-bold text-[10px] uppercase tracking-[0.2em]">Modular Software Systems</p>
           </div>
 
           {/* Navigation - Center */}
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
+          <div className="flex flex-wrap gap-x-10 gap-y-4">
             {NAV_LINKS.map(link => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-slate-600  hover:text-primary  transition-colors font-medium"
+                className="text-xs font-bold text-slate-500 hover:text-primary uppercase tracking-widest transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <a href="#contact" className="text-slate-600  hover:text-primary  transition-colors font-medium">Contact</a>
+            <a href="#contact" className="text-xs font-bold text-slate-500 hover:text-primary uppercase tracking-widest transition-colors">Contact</a>
           </div>
 
           {/* Socials - Right */}
-          <div className="flex gap-4">
-            <a href="https://github.com/ambalavanan-m" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-slate-900 flex items-center justify-center transition-all duration-300" aria-label="GitHub">
-              <Github className="w-5 h-5" />
-            </a>
-            <a href="https://www.linkedin.com/in/ambalavanan-m/" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-blue-600 flex items-center justify-center transition-all duration-300" aria-label="LinkedIn">
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a href="https://x.com/iam_ambalavanan" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-black flex items-center justify-center transition-all duration-300" aria-label="X (Twitter)">
-              <Twitter className="w-5 h-5" />
-            </a>
-            <a href="https://www.threads.com/@iam_ambalavanan" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-black flex items-center justify-center transition-all duration-300" aria-label="Threads">
-              <MessageCircle className="w-5 h-5" />
-            </a>
-            <a href="https://www.instagram.com/iam_ambalavanan/" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-pink-600 flex items-center justify-center transition-all duration-300" aria-label="Instagram">
-              <Instagram className="w-5 h-5" />
-            </a>
+          <div className="flex gap-3">
+            {[
+              { icon: Github, url: 'https://github.com/ambalavanan-m', label: 'GitHub', hoverBg: 'hover:bg-black' },
+              { icon: Linkedin, url: 'https://www.linkedin.com/in/ambalavanan-m/', label: 'LinkedIn', hoverBg: 'hover:bg-[#0077b5]' },
+              { icon: Twitter, url: 'https://x.com/iam_ambalavanan', label: 'X', hoverBg: 'hover:bg-black' },
+              { icon: MessageCircle, url: 'https://www.threads.com/@iam_ambalavanan', label: 'Threads', hoverBg: 'hover:bg-black' },
+              { icon: Instagram, url: 'https://www.instagram.com/iam_ambalavanan/', label: 'Instagram', hoverBg: 'hover:bg-[#E1306C]' }
+            ].map((social) => (
+              <a 
+                key={social.label}
+                href={social.url} 
+                className={`w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-white ${social.hoverBg} transition-all`} 
+                aria-label={social.label}
+              >
+                <social.icon className="w-4 h-4" />
+              </a>
+            ))}
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-slate-200 pt-8 mt-8 flex flex-col md:flex-row items-center gap-4 md:gap-0">
-          <div className="md:flex-1 text-center md:text-left">
-            <p className="text-slate-400 text-sm">
-              &copy; {new Date().getFullYear()} Ambalavanan. All rights reserved.
-            </p>
+        {/* Global Footer Bottom */}
+        <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+            &copy; {new Date().getFullYear()} ambalavanan &mdash; built for scale
+          </p>
+          
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">v1.6.1</span>
+            </div>
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">India</p>
           </div>
-          <div className="md:flex-1 flex items-center justify-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-slate-500 font-mono text-xs font-medium tracking-wider">v1.6.1</span>
-          </div>
-          <div className="hidden md:block md:flex-1"></div>
         </div>
       </div>
     </footer>

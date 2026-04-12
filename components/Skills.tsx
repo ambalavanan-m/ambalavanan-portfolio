@@ -12,44 +12,43 @@ const skillIcons = {
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-24 bg-slate-50 transition-colors duration-300 relative overflow-hidden">
+    <section id="skills" className="py-24 bg-transparent transition-colors duration-300 relative overflow-hidden">
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <p className="text-primary font-bold tracking-widest uppercase text-sm mb-2">My Skills</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Technical skills across web, cloud, and software engineering</h2>
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+        <div className="text-center mb-20">
+          <p className="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-3">Expertise</p>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-text">Technical Proficiency</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {SKILL_CATEGORIES.map((category, catIndex) => (
             <FadeIn key={category.title} delay={catIndex * 100} className="h-full">
-              <div className="bg-white p-6 rounded-[32px] h-full shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-100">
-                <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2 border-b border-slate-100 pb-4">
-                  <span className="w-1.5 h-6 bg-primary rounded-full"></span>
+              <div className="studio-card p-8 rounded-2xl h-full flex flex-col">
+                <h3 className="text-xs font-bold text-text uppercase tracking-[0.15em] mb-8 pb-4 border-b border-slate-100 flex items-center gap-2">
                   {category.title}
                 </h3>
 
-                <div className="space-y-6">
+                <div className="space-y-8">
                   {category.skills.map((skill) => (
                     <div key={skill.name} className="group">
-                      <div className="flex justify-between items-center mb-2">
-                        <div className="flex items-center gap-3">
+                      <div className="flex justify-between items-center mb-3">
+                        <div className="flex items-center gap-4">
                           {skill.icon ? (
                             React.createElement(skillIcons[skill.icon as keyof typeof skillIcons], {
-                              className: 'w-5 h-5 text-blue-500 transition-transform group-hover:scale-110'
+                              className: 'w-4 h-4 text-primary transition-all duration-300 transform group-hover:scale-110'
                             })
                           ) : (
-                            <i className={`${skill.iconClass} text-xl transition-transform group-hover:scale-110`}></i>
+                            <i className={`${skill.iconClass} text-lg text-primary transition-all duration-300 transform group-hover:scale-110`}></i>
                           )}
-                          <span className="font-medium text-slate-600 group-hover:text-primary transition-colors text-sm">{skill.name}</span>
+                          <span className="font-semibold text-slate-500 group-hover:text-text transition-colors text-xs uppercase tracking-tight">{skill.name}</span>
                         </div>
                       </div>
 
                       {/* Progress Bar Track */}
-                      <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                      <div className="w-full bg-slate-50 border border-slate-100 rounded-full h-1 overflow-hidden">
                         {/* Progress Bar Fill */}
                         <div
-                          className="bg-primary h-1.5 rounded-full transition-all duration-1000 ease-out"
+                          className="bg-primary h-1 rounded-full transition-all duration-1000 ease-out"
                           style={{ width: `${skill.percentage}%` }}
                         >
                         </div>
