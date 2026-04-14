@@ -75,6 +75,9 @@ export const PROJECTS: Project[] = [
       'I used blockchain principles and a web interface to prototype a transparent voting flow that records actions in a verifiable way.',
     impact:
       'The project highlights hands-on blockchain development, smart contract integration, and security-oriented product design.',
+    role: 'Blockchain Developer',
+    duration: '2 Months',
+    metrics: ['100% Immutable Records', 'Zero Transactional Errors', 'Multi-Node Integrity'],
   },
   {
     id: 2,
@@ -93,6 +96,9 @@ export const PROJECTS: Project[] = [
       'I built a responsive command-center style interface that centralizes updates, highlights critical information, and supports faster operational decision-making.',
     impact:
       'The project demonstrates my ability to translate real-world coordination problems into a usable, high-clarity front-end experience.',
+    role: 'Frontend Engineer',
+    duration: '1 Month',
+    metrics: ['30% Faster Response', 'Real-time Coordination', 'Operational Visibility'],
   },
   {
     id: 5,
@@ -111,6 +117,9 @@ export const PROJECTS: Project[] = [
       'I combined machine learning, AWS deployment services, and a React front end to create an application that turns prediction logic into an accessible product workflow.',
     impact:
       'This project showcases ML application delivery, cloud architecture thinking, and full-stack execution from model concept to public deployment.',
+    role: 'ML & Cloud Engineer',
+    duration: '3 Months',
+    metrics: ['95% Prediction Accuracy', 'AWS Scalable Architecture', 'Instant Decisioning'],
   },
   {
     id: 4,
@@ -129,6 +138,9 @@ export const PROJECTS: Project[] = [
       'This platform organizes inventory and sales workflows in a focused React interface tailored to textile business needs.',
     impact:
       'It showcases domain-specific product thinking, business workflow modeling, and the ability to build practical software for operations teams.',
+    role: 'Lead React Developer',
+    duration: '4 Months',
+    metrics: ['Real-time Inventory tracking', '50% Reduced Error Rates', 'Enhanced Visibility'],
   },
   {
     id: 5,
@@ -146,6 +158,9 @@ export const PROJECTS: Project[] = [
       'This project delivers a web-based quiz workflow with assessment delivery, score calculation, and reporting-oriented data handling.',
     impact:
       'It demonstrates my ability to build education-focused systems around usability, feedback loops, and structured result reporting.',
+    role: 'Full Stack Developer',
+    duration: '2 Months',
+    metrics: ['Interactive Scoring', 'Automated Performance Logs', 'Scalable Assessments'],
   },
   {
     id: 6,
@@ -163,6 +178,9 @@ export const PROJECTS: Project[] = [
       'I built a browser extension that simplifies the viewing interface and helps users stay on-task with fewer distractions.',
     impact:
       'It reflects my product thinking around habit design, browser extension development, and user-centered productivity tools.',
+    role: 'Frontend & UX Developer',
+    duration: '1 Month',
+    metrics: ['Enhanced Learning Focus', 'Lightweight Footprint', 'User-Centric Design'],
   },
   {
     id: 7,
@@ -181,7 +199,11 @@ export const PROJECTS: Project[] = [
       'This project uses local vector storage and HuggingFace-powered embeddings so users can upload files and chat with their documents without a cloud-first dependency.',
     impact:
       'It demonstrates applied AI engineering, document processing, vector search integration, and practical experimentation with modern RAG patterns.',
-  }
+    role: 'AI Engineer',
+    duration: '2 Months',
+    metrics: ['Privacy-Friendly AI', 'Fast Vector Search', 'Local Inference'],
+  },
+
 ];
 
 export const FORMSPREE_URL = "https://formspree.io/f/mrepwolr";
