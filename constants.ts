@@ -54,6 +54,16 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'OOP', icon: 'boxes', percentage: 90 },
       { name: 'Linear Regression', icon: 'chart-column', percentage: 80 },
     ]
+  },
+  {
+    title: 'Soft Skills',
+    skills: [
+      { name: 'Problem Solving', icon: 'lightbulb'},
+      { name: 'Teamwork', icon: 'users'},
+      { name: 'Communication', icon: 'comments'},
+      { name: 'Adaptability', icon: 'refresh'},
+      { name: 'Time Management', icon: 'clock'},
+    ]
   }
 ];
 
@@ -101,7 +111,7 @@ export const PROJECTS: Project[] = [
     metrics: ['30% Faster Response', 'Real-time Coordination', 'Operational Visibility'],
   },
   {
-    id: 5,
+    id: 3,
     slug: 'loan-approval-prediction',
     title: 'Loan Approval Prediction',
     image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/loan-prediction_uxggsv.webp',
@@ -158,9 +168,6 @@ export const PROJECTS: Project[] = [
       'This project delivers a web-based quiz workflow with assessment delivery, score calculation, and reporting-oriented data handling.',
     impact:
       'It demonstrates my ability to build education-focused systems around usability, feedback loops, and structured result reporting.',
-    role: 'Full Stack Developer',
-    duration: '2 Months',
-    metrics: ['Interactive Scoring', 'Automated Performance Logs', 'Scalable Assessments'],
   }
 ];
 
