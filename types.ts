@@ -11,6 +11,9 @@ export interface Project {
   problem: string;
   solution: string;
   impact: string;
+  role?: string;
+  duration?: string;
+  metrics?: string[];
 }
 
 export interface SkillItem {

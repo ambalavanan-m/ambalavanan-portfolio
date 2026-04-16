@@ -102,15 +102,15 @@ const About: React.FC = () => {
             <FadeIn direction="up" delay={200}>
               <div className="space-y-6">
                 <p className="text-primary font-bold tracking-[0.2em] uppercase text-xs">Profile</p>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-text leading-[1.1] tracking-tight">Software engineering with a focus on resilient <span className="text-primary">architecture</span>.</h2>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-text leading-[1.1] tracking-tight">Building resilient architecture for the next generation of <span className="text-primary">digital products</span>.</h2>
               </div>
 
               <div className="text-slate-500 space-y-6 leading-relaxed text-lg mt-8 font-normal">
                 <p>
-                  I am a <span className="text-text font-semibold">Software Engineer</span> and <span className="text-text font-semibold underline decoration-primary/30 underline-offset-4">AWS Certified Cloud Practitioner</span> specialized in building modular, high-performance applications. My expertise covers the full development lifecycle, from system design to cloud deployment.
+                  I specialize in engineering <span className="text-text font-semibold">high-performance, modular applications</span> that solve complex business challenges. As an <span className="text-text font-semibold underline decoration-primary/30 underline-offset-4">AWS Certified Cloud Practitioner</span>, I ensure every solution is built on a foundation of scalability, security, and operational excellence.
                 </p>
                 <p>
-                  My technical stack is centered around <strong className="text-text">React, Java, and Python</strong>, with a deep focus on scalability and security. I leverage AWS infrastructure to build products that are not just functional, but built to evolve with modern business needs.
+                  Whether you need a full-stack web experience or a cloud-native backend, I translate your <strong className="text-text">business vision into robust code</strong> that evolves with your needs. I don't just build features; I build systems designed to scale and succeed.
                 </p>
               </div>
 

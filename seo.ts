@@ -134,6 +134,13 @@ export const getProjectMeta = (project: Project): SeoMeta => ({
       },
       image: toAbsoluteUrl(project.image),
       url: `${SITE_URL}/projects/${project.slug}`,
+      // Custom properties for schema
+      author: {
+        '@type': 'Person',
+        name: 'Ambalavanan M',
+        jobTitle: project.role || 'Software Engineer'
+      },
+      timeRequired: project.duration
     },
     {
       '@context': 'https://schema.org',
