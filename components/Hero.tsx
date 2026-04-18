@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
               href="#projects"
               className="w-full sm:w-auto px-10 py-4 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl shadow-md shadow-primary/20 transition-all transform hover:-translate-y-1 text-center"
             >
-              Recent Work
+              Project Works
             </a>
             <Link
               to="/resume"
