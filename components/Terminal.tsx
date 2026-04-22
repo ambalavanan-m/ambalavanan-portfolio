@@ -4,6 +4,7 @@ import { Terminal as TerminalIcon, X, ChevronRight, Command } from 'lucide-react
 import { useNavigate } from 'react-router-dom';
 import { PROJECTS, SKILL_CATEGORIES } from '../constants';
 import emailjs from '@emailjs/browser';
+import confetti from 'canvas-confetti';
 
 const Typewriter: React.FC<{ text: string; delay?: number }> = ({ text, delay = 15 }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -24,7 +25,7 @@ const Typewriter: React.FC<{ text: string; delay?: number }> = ({ text, delay = 
 const Terminal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [history, setHistory] = useState<Array<{ type: 'input' | 'output' | 'error' | 'success'; content: string }>>([
-    { type: 'output', content: 'Welcome to Ambalavanan\'s Portfolio Shell v2.0.0-pro' },
+    { type: 'output', content: 'Welcome to Ambalavanan\'s Portfolio Shell v1.6.5' },
     { type: 'output', content: 'Type "help" to see available commands or "contact" to send a message.' }
   ]);
   const [input, setInput] = useState('');
@@ -47,7 +48,7 @@ const Terminal: React.FC = () => {
     cyber: { primary: 'text-pink-500', bg: 'bg-indigo-950/90', border: 'border-pink-900' },
   };
 
-  const COMMANDS = ['help', 'about', 'projects', 'skills', 'contact', 'clear', 'exit', 'home', 'ls', 'cd', 'whoami', 'theme', 'sudo'];
+  const COMMANDS = ['help', 'about', 'projects', 'skills', 'contact', 'clear', 'exit', 'home', 'ls', 'cd', 'whoami', 'theme', 'sudo', 'download', 'run', 'fetch'];
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -197,6 +198,7 @@ const Terminal: React.FC = () => {
           { type: 'output', content: '  contact        - Message Ambalavanan' },
           { type: 'output', content: '  whoami         - System information' },
           { type: 'output', content: '  theme [name]   - matrix, amber, cyber, default' },
+          { type: 'output', content: '  download resume - Downloads the resume PDF' },
           { type: 'output', content: '  about, skills, clear, exit, home' }
         ]);
         break;
@@ -236,8 +238,8 @@ const Terminal: React.FC = () => {
           { type: 'output', content: '-----------------------------------------' },
           { type: 'success', content: 'NAME: Ambalavanan M' },
           { type: 'output', content: 'ROLE: Full Stack Developer & Cloud Enthusiast' },
-          { type: 'output', content: 'LOC: Chennai, India' },
-          { type: 'output', content: 'OS: Portfolio-v2-Pro / React-Terminal' },
+          { type: 'output', content: 'LOCATION: Vellore, India' },
+          { type: 'output', content: 'OS: Portfolio-v1.6.5 / React-Terminal' },
           { type: 'output', content: 'SKILLS: AWS, React, Python, Java, Blockchain' },
           { type: 'output', content: 'UPTIME: 99.9% (Always learning)' }
         ]);
@@ -268,7 +270,7 @@ const Terminal: React.FC = () => {
         ]);
         break;
       case 'clear':
-        setHistory([{ type: 'output', content: 'Welcome to Ambalavanan\'s Portfolio Shell v2.0.0-pro' }]);
+        setHistory([{ type: 'output', content: 'Welcome to Ambalavanan\'s Portfolio Shell v1.6.5' }]);
         break;
       case 'exit':
         setIsOpen(false);
@@ -277,8 +279,44 @@ const Terminal: React.FC = () => {
         navigate('/');
         setIsOpen(false);
         break;
+      case 'download':
+        if (params === 'resume') {
+          setHistory(prev => [...prev, { type: 'success', content: 'Downloading Resume...' }]);
+          const link = document.createElement('a');
+          link.href = '/Ambalavanan_M_Resume.pdf';
+          link.download = 'Ambalavanan_M_Resume.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          setHistory(prev => [...prev, { type: 'error', content: 'Resource not found.' }]);
+        }
+        break;
       case 'sudo':
-        setHistory(prev => [...prev, { type: 'error', content: 'Nice try! But you already have root access to my portfolio.' }]);
+        if (params === 'hire') {
+          confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+          setHistory(prev => [...prev, { type: 'success', content: 'Outstanding move. Let’s talk.' }]);
+          startContactWizard();
+        } else {
+          setHistory(prev => [...prev, { type: 'error', content: 'Nice try! But you already have root access to my portfolio.' }]);
+        }
+        break;
+      case 'run':
+        if (params === 'matrix') {
+          setTheme('matrix');
+          setHistory(prev => [...prev, { type: 'success', content: 'Wake up, Neo...\nThe Matrix has you...\nFollow the white rabbit.' }]);
+        } else {
+          setHistory(prev => [...prev, { type: 'error', content: 'Cannot run the requested operation.' }]);
+        }
+        break;
+      case 'fetch':
+        if (params === 'resume') {
+          setHistory(prev => [...prev, { type: 'success', content: 'Opening Resume...' }]);
+          setTimeout(() => navigate('/resume'), 1000);
+          setIsOpen(false);
+        } else {
+          setHistory(prev => [...prev, { type: 'error', content: 'Resource not found.' }]);
+        }
         break;
       default:
         if (cmd.startsWith('echo ')) {

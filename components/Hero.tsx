@@ -2,6 +2,7 @@ import React from 'react';
 import { FileText, Github, Instagram, Linkedin, MessageCircle, Twitter } from 'lucide-react';
 import { Typewriter } from 'react-simple-typewriter';
 import { Link } from 'react-router-dom';
+import MagneticButton from './MagneticButton';
 
 const Hero: React.FC = () => {
 
@@ -41,19 +42,23 @@ const Hero: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <a
-              href="#projects"
-              className="w-full sm:w-auto px-10 py-4 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl shadow-md shadow-primary/20 transition-all transform hover:-translate-y-1 text-center"
-            >
-              Project Works
-            </a>
-            <Link
-              to="/resume"
-              className="w-full sm:w-auto px-10 py-4 bg-white text-text border border-slate-200 hover:border-primary hover:text-primary font-semibold rounded-xl transition-all text-center flex items-center justify-center gap-2 group"
-            >
-              Resume <FileText className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 z-10 relative">
+            <MagneticButton className="w-full sm:w-auto">
+              <a
+                href="#projects"
+                className="block w-full px-10 py-4 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl shadow-md shadow-primary/20 transition-all text-center"
+              >
+                Project Works
+              </a>
+            </MagneticButton>
+            <MagneticButton className="w-full sm:w-auto">
+              <Link
+                to="/resume"
+                className="block w-full px-10 py-4 bg-white text-text border border-slate-200 hover:border-primary hover:text-primary font-semibold rounded-xl transition-all text-center flex items-center justify-center gap-2 group"
+              >
+                Resume <FileText className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </MagneticButton>
           </div>
 
           <div className="flex items-center justify-center lg:justify-start gap-8 text-slate-400 pt-6">

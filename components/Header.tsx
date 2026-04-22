@@ -1,16 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Palette } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
+import { useTheme } from './ThemeContext';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showColorPicker, setShowColorPicker] = useState(false);
 
   const { scrollYProgress } = useScroll();
   const lastClickRef = useRef<{ count: number; time: number }>({ count: 0, time: 0 });
+  const { accentColor, setAccentColor } = useTheme();
+
+  const ACCENT_COLORS: {name: any, color: string}[] = [
+    { name: 'blue', color: 'bg-blue-600' },
+    { name: 'green', color: 'bg-green-600' },
+    { name: 'rose', color: 'bg-rose-600' },
+    { name: 'violet', color: 'bg-violet-600' },
+    { name: 'amber', color: 'bg-amber-600' },
+  ];
 
   const handleLogoClick = () => {
     const now = Date.now();
@@ -150,6 +161,41 @@ const Header: React.FC = () => {
 
             {/* Action Group */}
             <div className="flex items-center gap-3">
+              
+              {/* Color Picker Toggle */}
+              <div className="relative flex items-center justify-center">
+                <button
+                  onClick={() => setShowColorPicker(!showColorPicker)}
+                  className={`flex items-center justify-center transition-all duration-300 ${isScrolled ? 'w-8 h-8' : 'w-10 h-10'} rounded-full border border-slate-200/60 bg-white/50 text-slate-600 hover:text-primary active:scale-90`}
+                  aria-label="Theme Accent Color"
+                >
+                  <Palette size={18} strokeWidth={2.5} />
+                </button>
+                
+                <AnimatePresence>
+                  {showColorPicker && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      className="absolute top-14 right-0 bg-white backdrop-blur-xl border border-slate-200 shadow-xl rounded-2xl p-3 flex gap-2 z-50"
+                    >
+                      {ACCENT_COLORS.map((c) => (
+                        <button
+                          key={c.name}
+                          onClick={() => {
+                            setAccentColor(c.name);
+                            setShowColorPicker(false);
+                          }}
+                          className={`w-7 h-7 rounded-full ${c.color} transition-transform hover:scale-110 ${accentColor === c.name ? 'ring-2 ring-slate-800 ring-offset-2' : ''}`}
+                          aria-label={`Select ${c.name} accent`}
+                        />
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               {/* Mobile Toggle */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}

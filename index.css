@@ -105,5 +105,37 @@
 }
 
 :root {
-  --primary-rgb: 37, 99, 235; /* primary blue */
+  --color-primary: 37 99 235;
+  --primary-rgb: 37, 99, 235;
+  --color-primary-hover: 29 78 216;
+}
+
+[data-accent="blue"] {
+  --color-primary: 37 99 235;
+  --primary-rgb: 37, 99, 235;
+  --color-primary-hover: 29 78 216;
+}
+
+[data-accent="green"] {
+  --color-primary: 22 163 74;
+  --primary-rgb: 22, 163, 74;
+  --color-primary-hover: 21 128 61;
+}
+
+[data-accent="rose"] {
+  --color-primary: 225 29 72;
+  --primary-rgb: 225, 29, 72;
+  --color-primary-hover: 190 18 60;
+}
+
+[data-accent="violet"] {
+  --color-primary: 124 58 237;
+  --primary-rgb: 124, 58, 237;
+  --color-primary-hover: 109 40 217;
+}
+
+[data-accent="amber"] {
+  --color-primary: 217 119 6;
+  --primary-rgb: 217, 119, 6;
+  --color-primary-hover: 180 83 9;
 }

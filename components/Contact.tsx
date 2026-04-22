@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import emailjs from '@emailjs/browser';
 import { ContactFormState, FormStatus } from '../types';
 import ReviewForm from './ReviewForm';
+import MagneticButton from './MagneticButton';
 import { auth, db } from '../firebase';
 import { 
   signInWithPopup, 
@@ -368,26 +369,28 @@ const Contact: React.FC = () => {
                 {errors.message && <p className="text-red-500 text-[10px] mt-1 font-bold italic">{errors.message}</p>}
               </div>
 
-              <div className="flex flex-col items-end pt-6">
-                <button
-                  type="submit"
-                  disabled={status === 'submitting' || status === 'success'}
-                  className="w-full sm:w-auto px-10 py-4 rounded-xl font-bold text-white bg-text hover:bg-primary shadow-lg shadow-text/5 hover:shadow-primary/20 transition-all flex items-center justify-center gap-3 transform hover:-translate-y-1 disabled:opacity-70"
-                >
-                  {status === 'submitting' ? (
-                    <>
-                      <LoaderCircle className="w-4 h-4 animate-spin text-white" /> Broadcasting...
-                    </>
-                  ) : status === 'success' ? (
-                    <>
-                      <Check className="w-4 h-4 text-white" /> Transferred!
-                    </>
-                  ) : (
-                    <>
-                      Send Message! <Send className="w-3.5 h-3.5 text-white" />
-                    </>
-                  )}
-                </button>
+              <div className="flex flex-col items-end pt-6 relative z-10 w-full sm:w-auto">
+                <MagneticButton className="w-full sm:w-auto">
+                  <button
+                    type="submit"
+                    disabled={status === 'submitting' || status === 'success'}
+                    className="w-full sm:w-auto px-10 py-4 rounded-xl font-bold text-white bg-text hover:bg-primary shadow-lg shadow-text/5 hover:shadow-primary/20 transition-all flex items-center justify-center gap-3 transform hover:-translate-y-1 disabled:opacity-70 border-none outline-none"
+                  >
+                    {status === 'submitting' ? (
+                      <>
+                        <LoaderCircle className="w-4 h-4 animate-spin text-white" /> Broadcasting...
+                      </>
+                    ) : status === 'success' ? (
+                      <>
+                        <Check className="w-4 h-4 text-white" /> Transferred!
+                      </>
+                    ) : (
+                      <>
+                        Send Message! <Send className="w-3.5 h-3.5 text-white" />
+                      </>
+                    )}
+                  </button>
+                </MagneticButton>
               </div>
             </form>
 

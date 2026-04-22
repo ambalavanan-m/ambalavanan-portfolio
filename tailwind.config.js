@@ -11,9 +11,9 @@ export default {
       colors: {
         bg: '#ffffff',
         surface: '#fcfcfc',
-        primary: '#2563eb', // Electric Blue
-        'primary-hover': '#1d4ed8',
-        secondary: '#64748b', // Slate
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        'primary-hover': 'rgb(var(--color-primary-hover) / <alpha-value>)',
+        secondary: '#64748b',
         'secondary-hover': '#475569',
         text: '#020617', // Deepest Navy
         muted: '#94a3b8',

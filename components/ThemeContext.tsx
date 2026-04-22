@@ -1,31 +1,45 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark';
+type AccentColor = 'blue' | 'green' | 'rose' | 'violet' | 'amber';
 
 interface ThemeContextType {
-    theme: Theme;
-    toggleTheme: () => void;
+    theme: 'light'; // Forced light mode
+    accentColor: AccentColor;
+    setAccentColor: (color: AccentColor) => void;
+    toggleTheme: () => void; // Dummy
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const theme: Theme = 'light';
-
-    // Dummy function since the toggle is removed from UI
-    const toggleTheme = () => { };
+    const [accentColor, setAccentColorState] = useState<AccentColor>('blue');
+    const theme = 'light';
 
     useEffect(() => {
         const root = window.document.documentElement;
-        // Remove dark class if it was previously set
         root.classList.remove('dark');
-        // Force light mode
         root.classList.add('light');
         localStorage.setItem('theme', 'light');
+
+        const savedAccent = localStorage.getItem('accentColor') as AccentColor;
+        if (savedAccent && ['blue', 'green', 'rose', 'violet', 'amber'].includes(savedAccent)) {
+            setAccentColorState(savedAccent);
+            root.setAttribute('data-accent', savedAccent);
+        } else {
+            root.setAttribute('data-accent', 'blue');
+        }
     }, []);
 
+    const setAccentColor = (color: AccentColor) => {
+        setAccentColorState(color);
+        localStorage.setItem('accentColor', color);
+        window.document.documentElement.setAttribute('data-accent', color);
+    };
+
+    const toggleTheme = () => { }; // Keep dummy function so other components don't break
+
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, accentColor, setAccentColor, toggleTheme }}>
             {children}
         </ThemeContext.Provider>
     );
